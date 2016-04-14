@@ -11,6 +11,7 @@ import UIKit
 protocol workWhithControllerViewFromImageCollectionView {
     
     func setCorrectActiveCellInView(activeItem:PhotoInfo?)
+    func getMorePhoto(scrollView:UIScrollView)
     
 }
 
@@ -63,6 +64,8 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
         //controllerDelegate?.setCorrectActiveCellInView(photos[indexPath.row]) //NOT Work good! get start behind the PrepareForSeguei - but needed to be first
     }
     
-    //func collection
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        controllerDelegate?.getMorePhoto(scrollView)
+        }
     
 }
