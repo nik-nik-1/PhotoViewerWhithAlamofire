@@ -8,14 +8,21 @@
 
 import UIKit
 
+protocol workWhithControllerViewFromImageCollectionView {
+    
+    func setCorrectActiveCellInView(activeItem:PhotoInfo?)
+    
+}
+
 class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UICollectionViewDelegate{
 
-    var photos = NSMutableOrderedSet(){
+    var photos: [PhotoInfo] = [] {//= NSMutableOrderedSet(){
         didSet {
             self.reloadData()
         }
     }
 
+    var controllerDelegate: workWhithControllerViewFromImageCollectionView?;
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,8 +42,27 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
-//        cell.delegate = self
+        //cell.delegate = self
+        
+        let imageItemCell = cell //as! ImageCollectionViewCell
+        let photoItemElem = photos[indexPath.row]
+        
+        imageItemCell.photoItemElem = photoItemElem
+
         return cell
     }
+    
+    //MARK: UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        performSegueWithIdentifier("ShowPhoto", sender: (self.photos.objectAtIndex(indexPath.item) as! PhotoInfo).id)
+        
+        //controllerDelegate?.setCorrectActiveCellInView(photos[indexPath.row]) //NOT Work good! get start behind the PrepareForSeguei - but needed to be first
+    }
+    
+    //func collection
     
 }

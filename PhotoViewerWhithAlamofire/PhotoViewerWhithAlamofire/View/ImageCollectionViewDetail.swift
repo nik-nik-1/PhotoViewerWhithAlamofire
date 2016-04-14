@@ -8,6 +8,8 @@
 
 import UIKit
 
-class ImageViewDetail: UIView {
+class ImageCollectionViewDetail: UIViewController {
 
+    var receivedCell: PhotoInfo?
+    
 }

@@ -10,25 +10,42 @@ import Alamofire
 
 class JSONWork {
     
-    static func getJSONDataFromURl (callback: ((data:[PhotoInfo]) -> Void)) {
+    static func getJSONDataFromURl (imageSize:Five100px.ImageSize, callback: ((data:[PhotoInfo]) -> Void)) {
         
-        Alamofire.request(.GET, GeneralValues.urlOf500px, parameters: ["consumer_key": GeneralValues.consumer_keyFor500px]).responseJSON() {
-            (JSON)//(_, _, JSON, _)
-            in
-            //print(JSON)
-            //
-            print(JSON)
+        Alamofire.request(.GET, GeneralValues.urlOf500px, parameters: ["consumer_key": GeneralValues.consumer_keyFor500px, "image_size":String(imageSize.rawValue)]).responseJSON() {
             
-            //JSON.data
-            
-            let photoInfos = (JSON.data!.valueForKey("photos") as! [NSDictionary]).filter({
-                ($0["nsfw"] as! Bool) == false
-            }).map {
-                PhotoInfo(id: $0["id"] as! Int, url: $0["image_url"] as! String)
+            response in switch response.result {
+            case .Success(let JSONData):
+                // print("Success with JSON: \(JSONData)")
+                
+                let JSON = JSONData as! NSDictionary
+                
+                let photoInfos = (JSON.valueForKey("photos") as! [NSDictionary]).filter({
+                    ($0["nsfw"] as! Bool) == false
+                }).map {
+                    PhotoInfo(id: $0["id"] as! Int, url: $0["image_url"] as! String)
+                }
+                
+                callback(data: photoInfos)
+                
+            case .Failure(let error):
+                print("Request failed with error: \(error)")
             }
-
-            
-            callback(data: photoInfos)
+        }
+    }
+    
+    static func getImageFromJSONData (imageURL:String, callBack: ((Image: UIImage) -> Void)) {
+        
+        Alamofire.request(.GET, imageURL).responseData	() {
+            response in switch response.result {
+            case .Success(let URLData):
+                
+                let image = UIImage(data: URLData)
+                
+                callBack(Image: image!)
+            case .Failure(let error):
+                print("Request failed with error: \(error)")
+            }
         }
     }
     
