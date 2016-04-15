@@ -20,11 +20,14 @@ class ImageViewDetailController: UIViewController {
         
         if receivedCell != nil {
             
-            imageId?.text     = String(receivedCell!.id)
+            let photoId:String = String(receivedCell!.id)
+            imageId?.text = photoId
             
-            JSONWork.getImageFromJSONData(receivedCell!.url) {(Image: UIImage) -> Void in
+            let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: photoId)
+            JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
                 self.imageView.image = Image
             }
+            
         }
     }
     

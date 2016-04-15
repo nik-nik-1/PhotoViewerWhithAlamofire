@@ -10,21 +10,26 @@ import UIKit
 
 class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageCollectionView {
     
-    var currentPage = 1
+    var currentPage:Int = 0{
+        didSet {
+            GeneralValues.pageToLoad = self.currentPage
+        }
+    }
     var populatingPhotos: Bool = false
     var recivedCellFromImageViewCotroller:PhotoInfo?
     
     var photos:[PhotoInfo] = []{//[NSOrderedSet] = []{
         didSet {
+            
             collectionView.photos = photos
-//            collectionView.reloadData()
+            
         }
     }
     
     private var tapPressGesture: UITapGestureRecognizer!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-//    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    //    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     let gridFlowLayout = ImageGridFlowLayout()
     
     
@@ -32,12 +37,13 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     @IBAction func refreshImageData(sender: AnyObject) {
         spinner.startAnimating()
         
-        JSONWork.getJSONDataFromURl(Five100px.ImageSize.Tiny) {(photoInfos) -> Void in
-           
+        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
+        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
+            
             //self.photos.addObjectsFromArray(photoInfos)
             self.photos = photoInfos
             dispatch_async(dispatch_get_main_queue()) {
-               
+                
                 self.collectionView.reloadData()
             }
         }
@@ -50,14 +56,16 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         collectionView.controllerDelegate = self;
         
         setupInit()
-//        view.addSubview(spinner)
+        //        view.addSubview(spinner)
     }
     
     func setupInit() {
+        currentPage = 0
+        
         collectionView.collectionViewLayout = gridFlowLayout
         
-//        spinner.center = CGPoint(x: view.center.x, y: view.center.y - view.bounds.origin.y / 2.0)
-//        spinner.hidesWhenStopped = true
+        //        spinner.center = CGPoint(x: view.center.x, y: view.center.y - view.bounds.origin.y / 2.0)
+        //        spinner.hidesWhenStopped = true
         
         tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleTapGesture(_:)))
         tapPressGesture.cancelsTouchesInView = false;
@@ -71,7 +79,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
             let detailViewController = segue.destinationViewController as! ImageViewDetailController
             
             detailViewController.receivedCell = recivedCellFromImageViewCotroller
-//            detailViewController.detailDelegate = self
+            //            detailViewController.detailDelegate = self
         }
     }
     
@@ -87,49 +95,29 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     }
     
     func getMorePhotoFromURL(){
-        func populatePhotos() {
-            // 2
-            if populatingPhotos {
-                return
-            }
-            
-            populatingPhotos = true
-            
-            // 3
-//            Alamofire.request(Five100px.Router.PopularPhotos(self.currentPage)).responseJSON() {
-//                (_, _, JSON, error) in
-//                
-//                if error == nil {
-//                    // 4
-//                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-//                        // 5, 6, 7
-//                        let photoInfos = ((JSON as! NSDictionary).valueForKey("photos") as! [NSDictionary]).filter({ ($0["nsfw"] as! Bool) == false }).map { PhotoInfo(id: $0["id"] as! Int, url: $0["image_url"] as! String) }
-//                        
-//                        // 8
-//                        let lastItem = self.photos.count
-//                        // 9
-//                        self.photos.addObjectsFromArray(photoInfos)
-//                        
-//                        // 10
-//                        let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
-//                        
-//                        // 11
-//                        dispatch_async(dispatch_get_main_queue()) {
-//                            self.collectionView!.insertItemsAtIndexPaths(indexPaths)
-//                        }
-//                        
-//                        self.currentPage++
-//                    }
-//                }
-//                self.populatingPhotos = false
-//            }
-            
-            JSONWork.getJSONDataFromURl(Five100px.ImageSize.Tiny) {(photoInfos) -> Void in
-                
-            }
-            
-        }
         
+        if populatingPhotos {
+            return
+        }
+        populatingPhotos = true
+        
+        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
+        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
+            
+            let lastItem = self.photos.count
+  
+            self.collectionView.updateCollectionWhenAddednewElement = false
+            self.photos += photoInfos
+            self.collectionView.updateCollectionWhenAddednewElement = true
+            
+            let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+            }
+            self.currentPage += 1
+        }
+        populatingPhotos = false
     }
 }
 
@@ -145,13 +133,13 @@ extension ImageViewCotroller{
             }
             
             setCorrectActiveCellInView(photos[selectedIndexPath.row])
-        
+            
         case UIGestureRecognizerState.Began: break
         default: break
             
         }
     }
-
+    
     
     
 }

@@ -19,10 +19,13 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
 
     var photos: [PhotoInfo] = [] {//= NSMutableOrderedSet(){
         didSet {
-            self.reloadData()
+            if self.updateCollectionWhenAddednewElement {
+                self.reloadData()
+            }
         }
     }
 
+    var updateCollectionWhenAddednewElement:Bool = true
     var controllerDelegate: workWhithControllerViewFromImageCollectionView?;
     
     required init?(coder aDecoder: NSCoder) {
