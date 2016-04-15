@@ -22,7 +22,6 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         didSet {
             
             collectionView.photos = photos
-            
         }
     }
     
@@ -35,19 +34,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     
     @IBOutlet weak var collectionView: ImageCollectionView!
     @IBAction func refreshImageData(sender: AnyObject) {
-        spinner.startAnimating()
-        
-        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
-        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
-            
-            //self.photos.addObjectsFromArray(photoInfos)
-            self.photos = photoInfos
-            dispatch_async(dispatch_get_main_queue()) {
-                
-                self.collectionView.reloadData()
-            }
-        }
-        spinner.stopAnimating()
+        refreshImageData ()
     }
     
     override func viewDidLoad() {
@@ -57,6 +44,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         
         setupInit()
         //        view.addSubview(spinner)
+        refreshImageData()
     }
     
     func setupInit() {
@@ -94,6 +82,35 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         }
     }
     
+    func refreshImageData () {
+        
+        
+        if populatingPhotos {
+            return
+        }
+        populatingPhotos = true
+        
+        currentPage = 0
+        
+        spinner.startAnimating()
+        
+        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
+        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
+            
+            //self.photos.addObjectsFromArray(photoInfos)
+            self.photos = photoInfos
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.collectionView.reloadData()
+                self.spinner.stopAnimating()
+                
+                self.currentPage += 1
+            }
+            self.populatingPhotos = false
+        }
+        
+    }
+    
     func getMorePhotoFromURL(){
         
         if populatingPhotos {
@@ -101,11 +118,13 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         }
         populatingPhotos = true
         
+        spinner.startAnimating()
+        
         let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
         JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
             
             let lastItem = self.photos.count
-  
+            
             self.collectionView.updateCollectionWhenAddednewElement = false
             self.photos += photoInfos
             self.collectionView.updateCollectionWhenAddednewElement = true
@@ -114,10 +133,12 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                self.spinner.stopAnimating()
             }
             self.currentPage += 1
+            self.populatingPhotos = false
         }
-        populatingPhotos = false
+//        populatingPhotos = false
     }
 }
 
