@@ -16,9 +16,9 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         }
     }
     var populatingPhotos: Bool = false
-    var recivedCellFromImageViewCotroller:PhotoInfo?
+    var recivedCellFromImageViewCotroller:PhotoInfoOM?
     
-    var photos:[PhotoInfo] = []{//[NSOrderedSet] = []{
+    var photos:[PhotoInfoOM] = []{//[NSOrderedSet] = []{
         didSet {
             
             collectionView.photos = photos
@@ -72,7 +72,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     }
     
     //MARK: Delgate: workWhithControllerViewFromImageCollectionView
-    func setCorrectActiveCellInView(activeItem: PhotoInfo?) {
+    func setCorrectActiveCellInView(activeItem: PhotoInfoOM?) {
         recivedCellFromImageViewCotroller = activeItem
     }
     

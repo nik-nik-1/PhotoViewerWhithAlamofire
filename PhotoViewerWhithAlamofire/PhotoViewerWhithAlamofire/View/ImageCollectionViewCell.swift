@@ -13,11 +13,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    var photoItemElem:PhotoInfo!{
+    var photoItemElem:PhotoInfoOM!{
         didSet {
             //imageId?.text     = String(photoItemElem.id)
             spinner.startAnimating()
-            JSONWork.getImageFromJSONData(photoItemElem.url) {(Image: UIImage) -> Void in
+            JSONWork.getImageFromJSONData(photoItemElem.url!) {(Image: UIImage) -> Void in
                 dispatch_async(dispatch_get_main_queue()){
                     self.imageView.image = Image
                     self.spinner.stopAnimating()

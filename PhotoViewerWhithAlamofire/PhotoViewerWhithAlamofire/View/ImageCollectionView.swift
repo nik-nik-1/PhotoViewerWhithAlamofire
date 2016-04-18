@@ -10,14 +10,14 @@ import UIKit
 
 protocol workWhithControllerViewFromImageCollectionView {
     
-    func setCorrectActiveCellInView(activeItem:PhotoInfo?)
+    func setCorrectActiveCellInView(activeItem:PhotoInfoOM?)
     func getMorePhoto(scrollView:UIScrollView)
     
 }
 
 class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UICollectionViewDelegate{
 
-    var photos: [PhotoInfo] = [] {//= NSMutableOrderedSet(){
+    var photos: [PhotoInfoOM] = [] {//= NSMutableOrderedSet(){
         didSet {
             if self.updateCollectionWhenAddednewElement {
                 self.reloadData()

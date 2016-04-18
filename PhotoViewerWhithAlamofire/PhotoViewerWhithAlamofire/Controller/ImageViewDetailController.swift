@@ -10,7 +10,7 @@ import UIKit
 
 class ImageViewDetailController: UIViewController {
 
-    var receivedCell: PhotoInfo?
+    var receivedCell: PhotoInfoOM?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -31,7 +31,11 @@ class ImageViewDetailController: UIViewController {
         
         if receivedCell != nil {
             
-            let photoId:String = String(receivedCell!.id)
+            var photoId:String = "" //= String(receivedCell!.id)
+            if let tempPhotoId = receivedCell!.id {
+                photoId = String(tempPhotoId)
+            }
+            
             imageId?.text = photoId
             
             let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: photoId)

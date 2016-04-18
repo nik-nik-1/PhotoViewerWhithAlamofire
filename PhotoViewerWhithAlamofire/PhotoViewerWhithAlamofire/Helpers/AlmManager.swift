@@ -39,8 +39,6 @@ struct Router500px {
             tTypeOfURL = String(defaulttypeOfURL.rawValue)
         }
         
-        //let tTypeOfURL:String = (typeOfURL != nil ? String(typeOfURL?.rawValue) : String(defaulttypeOfURL.rawValue))
-//        let tphotoId:String = (photoId != nil ? ("/"+photoId!) : "")
         var tphotoId: String = ""
         if let tempPhotoId = photoId {
             tphotoId = "/"+tempPhotoId
