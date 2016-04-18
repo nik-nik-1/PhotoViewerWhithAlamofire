@@ -21,6 +21,14 @@ class ImageViewDetailController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
+        
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+   
+        //super.viewDidAppear()
+        
         if receivedCell != nil {
             
             let photoId:String = String(receivedCell!.id)
@@ -29,6 +37,7 @@ class ImageViewDetailController: UIViewController {
             let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: photoId)
             JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
                 self.imageView.image = Image
+                self.imageView.frame = CGRect(x: 0, y: 0, width: Image.size.height, height: Image.size.width)
                 self.imageView.sizeToFit()
                 self.spinner.stopAnimating()
                 self.scrollView.contentSize = self.imageView.frame.size
@@ -36,5 +45,4 @@ class ImageViewDetailController: UIViewController {
             
         }
     }
-    
 }

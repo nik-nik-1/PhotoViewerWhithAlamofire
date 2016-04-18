@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06DCDF4D726943F783822AB8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B573C026ED555F9F39305C18 /* Pods.framework */; };
+		92FC8F590B10F13DD6911687 /* Pods_PhotoViewerWhithAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */; };
+		E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */; };
 		E723FEE51CBE63AA00234275 /* JSONWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE41CBE63AA00234275 /* JSONWork.swift */; };
 		E723FEE71CBE69BC00234275 /* GeneralValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE61CBE69BC00234275 /* GeneralValues.swift */; };
 		E723FEE91CBE6D8F00234275 /* PopularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE81CBE6D8F00234275 /* PopularImage.swift */; };
@@ -28,9 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0985320A46D30ABB22ED67F4 /* Pods-PhotoViewerWhithAlamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewerWhithAlamofire.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire.release.xcconfig"; sourceTree = "<group>"; };
+		172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewerWhithAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C1623A7FA52768D91545DB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6C589A5615DA195CEE425BE5 /* Pods-PhotoViewerWhithAlamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewerWhithAlamofire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire.debug.xcconfig"; sourceTree = "<group>"; };
 		9DD6B012C12A31939ABAD733 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B573C026ED555F9F39305C18 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70637691CC5040A00C2F7EE /* PhotoInfoWhithObjMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoWhithObjMap.swift; path = PhotoViewerWhithAlamofire/Model/PhotoInfoWhithObjMap.swift; sourceTree = "<group>"; };
 		E723FEE41CBE63AA00234275 /* JSONWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWork.swift; sourceTree = "<group>"; };
 		E723FEE61CBE69BC00234275 /* GeneralValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralValues.swift; sourceTree = "<group>"; };
 		E723FEE81CBE6D8F00234275 /* PopularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularImage.swift; sourceTree = "<group>"; };
@@ -49,7 +55,8 @@
 		E7A608291CBE4AD700C51912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		E7A6082C1CBE4AD700C51912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A6082E1CBE4AD700C51912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		E7A608391CBE4ED900C51912 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		E7A608391CBE4ED900C51912 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoWhithObjMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DCDF4D726943F783822AB8 /* Pods.framework in Frameworks */,
+				92FC8F590B10F13DD6911687 /* Pods_PhotoViewerWhithAlamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +77,8 @@
 			children = (
 				53C1623A7FA52768D91545DB /* Pods.debug.xcconfig */,
 				9DD6B012C12A31939ABAD733 /* Pods.release.xcconfig */,
+				6C589A5615DA195CEE425BE5 /* Pods-PhotoViewerWhithAlamofire.debug.xcconfig */,
+				0985320A46D30ABB22ED67F4 /* Pods-PhotoViewerWhithAlamofire.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -77,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B573C026ED555F9F39305C18 /* Pods.framework */,
+				172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,6 +95,7 @@
 		E7A608161CBE4AD700C51912 = {
 			isa = PBXGroup;
 			children = (
+				E70637691CC5040A00C2F7EE /* PhotoInfoWhithObjMap.swift */,
 				E7A608391CBE4ED900C51912 /* Podfile */,
 				E7A608211CBE4AD700C51912 /* PhotoViewerWhithAlamofire */,
 				E7A608201CBE4AD700C51912 /* Products */,
@@ -137,8 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				E723FEE81CBE6D8F00234275 /* PopularImage.swift */,
-				E723FEF81CBE967600234275 /* PhotoInfo.swift */,
 				E723FEFA1CBE96DD00234275 /* PhotoComment.swift */,
+				E723FEF81CBE967600234275 /* PhotoInfo.swift */,
+				E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,7 +260,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A299F070CE74574E77EAFBCD /* Check Pods Manifest.lock */ = {
@@ -277,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -291,6 +304,7 @@
 				E723FEFB1CBE96DD00234275 /* PhotoComment.swift in Sources */,
 				E723FEEF1CBE854A00234275 /* ImageCollectionController.swift in Sources */,
 				E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */,
+				E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */,
 				E723FF0B1CBFFFD200234275 /* AlmManager.swift in Sources */,
 				E723FEED1CBE84E200234275 /* ImageCollectionView.swift in Sources */,
 				E723FEF11CBE862700234275 /* ImageCollectionViewCell.swift in Sources */,
@@ -414,7 +428,7 @@
 		};
 		E7A608321CBE4AD700C51912 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53C1623A7FA52768D91545DB /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 6C589A5615DA195CEE425BE5 /* Pods-PhotoViewerWhithAlamofire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoViewerWhithAlamofire/Info.plist;
@@ -426,7 +440,7 @@
 		};
 		E7A608331CBE4AD700C51912 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DD6B012C12A31939ABAD733 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0985320A46D30ABB22ED67F4 /* Pods-PhotoViewerWhithAlamofire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoViewerWhithAlamofire/Info.plist;

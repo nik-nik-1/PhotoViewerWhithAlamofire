@@ -1,0 +1,6 @@
+framework module Pods_PhotoViewerWhithAlamofire {
+  umbrella header "Pods-PhotoViewerWhithAlamofire-umbrella.h"
+
+  export *
+  module * { export * }
+}
