@@ -33,12 +33,12 @@ class JSONWork {
         }
     
     
-    static func getPhotoInfoArrayFromData (JSON:NSDictionary) -> [PhotoInfoOM]{
+    static func getPhotoInfoArrayFromData (data:NSDictionary) -> [PhotoInfoOM]{
         
         var photoInfos:[PhotoInfoOM] = []
         
-        let valueForOne     = JSON.valueForKey("photo")
-        let valueFoArray    = JSON.valueForKey("photos")
+        let valueForOne     = data.valueForKey("photo")
+        let valueFoArray    = data.valueForKey("photos")
         
         if valueFoArray != nil {
             
@@ -52,6 +52,20 @@ class JSONWork {
             photoInfos.append(photoInfoElement)
         }
         
+        
+        return photoInfos
+    }
+    
+    static func getPhotoInfoArrayFromData (data:PhotoInfoOMDataFromULR) -> [PhotoInfoOM]{
+        
+        var photoInfos:[PhotoInfoOM] = []
+        
+        if (data.photo != nil) && (data.photos.count == 0) {
+            //this is 1 photo for request, let's create aray for callBack it
+            photoInfos.append(data.photo!)
+        } else {
+            photoInfos = data.photos
+        }
         
         return photoInfos
     }
@@ -73,13 +87,7 @@ class JSONWork {
                     
                 case .Success(let data):
                     
-                    var photosToReturn: [PhotoInfoOM] = []
-                    if (data.photo != nil) && (data.photos.count == 0) {
-                        //this is 1 photo for request, let's create aray for callBack it
-                        photosToReturn.append(data.photo!)
-                    } else {
-                        photosToReturn = data.photos
-                    }
+                    let photosToReturn = getPhotoInfoArrayFromData (data)
                     
                     callback(data: photosToReturn)
                     
@@ -88,8 +96,6 @@ class JSONWork {
                 }
         }
     }
-    
-    
     
     static func getImageFromJSONData (imageURL:String, callBack: ((Image: UIImage) -> Void)) {
         
