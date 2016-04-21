@@ -63,12 +63,28 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "imageDetailShow" {
-            let detailViewController = segue.destinationViewController as! ImageViewDetailController
+//        if segue.identifier == "imageDetailShow" {
+//            let detailViewController = segue.destinationViewController as! ImageViewDetailController
+//            
+//            detailViewController.receivedCell = recivedCellFromImageViewCotroller
+//            //            detailViewController.detailDelegate = self
+//        }
+        
+//        if let cell = sender as? UICollectionViewCell,
+//            //indexPath = collectionView?.indexPathForCell(cell),
+//            managePageViewController = segue.destinationViewController as? ManagePageViewController {
+//            managePageViewController.photos = photos
+////            managePageViewController.currentIndex = indexPath.row
+//            managePageViewController.receivedCell = recivedCellFromImageViewCotroller
+//        }
+        
+        if segue.identifier == "showPhotoPage" {
+            let managePageViewController = segue.destinationViewController as? ManagePageViewController
             
-            detailViewController.receivedCell = recivedCellFromImageViewCotroller
-            //            detailViewController.detailDelegate = self
+            managePageViewController!.photos = photos
+            managePageViewController!.receivedCell = recivedCellFromImageViewCotroller
         }
+        
     }
     
     //MARK: Delgate: workWhithControllerViewFromImageCollectionView

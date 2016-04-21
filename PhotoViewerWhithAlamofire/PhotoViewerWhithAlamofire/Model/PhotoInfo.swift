@@ -11,6 +11,7 @@ import Foundation
 class PhotoInfo: NSObject {
     let id: Int
     let url: String
+    var photoIndex: Int!
     
     var name: String?
     

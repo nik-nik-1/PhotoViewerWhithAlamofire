@@ -51,6 +51,7 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
         let imageItemCell = cell //as! ImageCollectionViewCell
         let photoItemElem = photos[indexPath.row]
         
+        photoItemElem.photoIndex = indexPath.row
         imageItemCell.photoItemElem = photoItemElem
 
         return cell

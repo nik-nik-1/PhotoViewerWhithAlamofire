@@ -15,6 +15,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     var photoItemElem:PhotoInfoOM!{
         didSet {
+
             //imageId?.text     = String(photoItemElem.id)
             spinner.startAnimating()
             JSONWork.getImageFromJSONData(photoItemElem.url!) {(Image: UIImage) -> Void in

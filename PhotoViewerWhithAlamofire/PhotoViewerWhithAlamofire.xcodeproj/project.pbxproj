@@ -10,6 +10,8 @@
 		06DCDF4D726943F783822AB8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B573C026ED555F9F39305C18 /* Pods.framework */; };
 		92FC8F590B10F13DD6911687 /* Pods_PhotoViewerWhithAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */; };
 		E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */; };
+		E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */; };
+		E706376F1CC7CE2E00C2F7EE /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706376E1CC7CE2E00C2F7EE /* GeneralFunctions.swift */; };
 		E723FEE51CBE63AA00234275 /* JSONWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE41CBE63AA00234275 /* JSONWork.swift */; };
 		E723FEE71CBE69BC00234275 /* GeneralValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE61CBE69BC00234275 /* GeneralValues.swift */; };
 		E723FEE91CBE6D8F00234275 /* PopularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE81CBE6D8F00234275 /* PopularImage.swift */; };
@@ -37,6 +39,8 @@
 		9DD6B012C12A31939ABAD733 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B573C026ED555F9F39305C18 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70637691CC5040A00C2F7EE /* PhotoInfoWhithObjMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoWhithObjMap.swift; path = PhotoViewerWhithAlamofire/Model/PhotoInfoWhithObjMap.swift; sourceTree = "<group>"; };
+		E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePageViewController.swift; sourceTree = "<group>"; };
+		E706376E1CC7CE2E00C2F7EE /* GeneralFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		E723FEE41CBE63AA00234275 /* JSONWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWork.swift; sourceTree = "<group>"; };
 		E723FEE61CBE69BC00234275 /* GeneralValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralValues.swift; sourceTree = "<group>"; };
 		E723FEE81CBE6D8F00234275 /* PopularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularImage.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				E723FEEA1CBE845500234275 /* ImageViewCotroller.swift */,
 				E723FEEE1CBE854A00234275 /* ImageCollectionController.swift */,
 				E723FEF41CBE898B00234275 /* ImageViewDetailController.swift */,
+				E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				E723FEE41CBE63AA00234275 /* JSONWork.swift */,
 				E723FEE61CBE69BC00234275 /* GeneralValues.swift */,
 				E723FF0A1CBFFFD200234275 /* AlmManager.swift */,
+				E706376E1CC7CE2E00C2F7EE /* GeneralFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -304,9 +310,11 @@
 				E723FEFB1CBE96DD00234275 /* PhotoComment.swift in Sources */,
 				E723FEEF1CBE854A00234275 /* ImageCollectionController.swift in Sources */,
 				E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */,
+				E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */,
 				E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */,
 				E723FF0B1CBFFFD200234275 /* AlmManager.swift in Sources */,
 				E723FEED1CBE84E200234275 /* ImageCollectionView.swift in Sources */,
+				E706376F1CC7CE2E00C2F7EE /* GeneralFunctions.swift in Sources */,
 				E723FEF11CBE862700234275 /* ImageCollectionViewCell.swift in Sources */,
 				E723FEF71CBE8D0300234275 /* ImageGridFlowLayuot.swift in Sources */,
 				E723FEE71CBE69BC00234275 /* GeneralValues.swift in Sources */,

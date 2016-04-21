@@ -9,62 +9,94 @@
 
 import UIKit
 
-class ImageViewDetailController: UIViewController {
+protocol SetViewParametersOnPageManager {
+    func setViewParametresOfNavigationItem (title: String!)
+}
 
+class ImageViewDetailController: UIViewController {
+    
     var receivedCell: PhotoInfoOM?
+    var photoIndex: Int? {
+        get {
+            return GeneralFunctions.getPhotoIndexFromItemElement(receivedCell)
+        }
+    }
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!{
+        didSet {
+            scrollView.contentSize = imageView.frame.size
+        }
+    }
     
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewCenterXConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewCenterYConstraint: NSLayoutConstraint!
     
+    //@IBOutlet weak var imageId: UILabel!
+    var imageIdStr:String {
+        get {
+            var photoId:String = ""
+            if receivedCell != nil {
+                
+                if let tempPhotoId = receivedCell!.id {
+                    photoId = String(tempPhotoId)
+                }
+            }
+            return photoId
+        }
+    }
     
-    @IBOutlet weak var contentViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var contentViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var contentViewTrailingConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var imageId: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    private var image: UIImage? {
+        get {return imageView.image}
+        set {
+            imageView.image = newValue
+            imageView.sizeToFit()
+            scrollView?.contentSize = imageView.frame.size
+            
+            if spinner.isAnimating() {
+                spinner.stopAnimating()
+            }
+        }
+    }
+    
+    var managerPageControllerDelegate: SetViewParametersOnPageManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         spinner.startAnimating()
         
+        scrollView.addSubview(imageView)
     }
     
     
     override func viewDidAppear(animated: Bool) {
-   
-        //super.viewDidAppear()
+        
+        navigationItem.title = "ID: "+imageIdStr
         
         if receivedCell != nil {
             
-            var photoId:String = "" //= String(receivedCell!.id)
-            if let tempPhotoId = receivedCell!.id {
-                photoId = String(tempPhotoId)
-            }
-            
-            imageId?.text = photoId
-            
-            let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: photoId)
+            let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: imageIdStr)
             JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
-                self.imageView.image = Image
-                self.imageView.frame = CGRect(x: 0, y: 0, width: Image.size.height, height: Image.size.width)
-                self.imageView.sizeToFit()
-                self.scrollView.contentSize = self.imageView.frame.size
-                            
-                self.spinner.stopAnimating()
+                
+                self.image = Image
+                //                self.imageView.image = Image
+                //                self.imageView.frame = CGRect(x: 0, y: 0, width: Image.size.height, height: Image.size.width)
+                //               self.imageView.sizeToFit()
+                
+                //                self.scrollView.contentSize = self.imageView.frame.size
+                
+                //                self.spinner.stopAnimating()
             }
             
         }
+        
+        managerPageControllerDelegate?.setViewParametresOfNavigationItem(navigationItem.title)
     }
 }
 
@@ -81,22 +113,21 @@ extension ImageViewDetailController: UIScrollViewDelegate {
         
         scrollView.zoomScale = minScale
     }
-   
+    
     private func updateConstraintsForSize(size: CGSize) {
         
-//        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-//        
-//        imageViewTopConstraint.constant = yOffset
-//        imageViewBottomConstraint.constant = yOffset
-//
-//        
-//        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-// 
-//        imageViewLeadingConstraint.constant = xOffset
-//        imageViewTrailingConstraint.constant = xOffset
-//
-//        
-//        view.layoutIfNeeded()
+        let yOffset = max(0, (size.height - imageView.frame.height) / 2.5) // 2.5 = little upper then center of view
+        
+        imageViewTopConstraint.constant = yOffset
+        imageViewBottomConstraint.constant = yOffset
+        
+        
+        let xOffset = max(0, (size.width - imageView.frame.width) / 2.5)
+        
+        imageViewLeadingConstraint.constant = xOffset
+        imageViewTrailingConstraint.constant = xOffset
+        
+        view.layoutIfNeeded()
     }
     
     override func viewDidLayoutSubviews() {

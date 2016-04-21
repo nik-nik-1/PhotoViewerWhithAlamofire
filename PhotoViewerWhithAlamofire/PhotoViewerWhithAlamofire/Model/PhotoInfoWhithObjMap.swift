@@ -13,7 +13,7 @@ class PhotoInfoOM: NSObject, Mappable {
 
     var id: Int?
     var url: String?
-    
+    var photoIndex: Int!
     
     override func isEqual(object: AnyObject!) -> Bool {
         return (object as! PhotoInfoOM).id == self.id
