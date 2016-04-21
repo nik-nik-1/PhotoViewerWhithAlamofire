@@ -1,4 +1,4 @@
-//
+
 //  AppDelegate.swift
 //  PhotoViewerWhithAlamofire
 //
@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        //This will customize the colors of the UIPageControl :
+//        let pageControl = UIPageControl.appearance()
+//        pageControl.pageIndicatorTintColor = UIColor.darkGrayColor()
+//        pageControl.currentPageIndicatorTintColor = UIColor.redColor()
+        
         return true
     }
 

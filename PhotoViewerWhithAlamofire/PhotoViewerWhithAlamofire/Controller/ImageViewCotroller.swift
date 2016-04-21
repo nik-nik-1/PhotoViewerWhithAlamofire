@@ -63,28 +63,18 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-//        if segue.identifier == "imageDetailShow" {
-//            let detailViewController = segue.destinationViewController as! ImageViewDetailController
-//            
-//            detailViewController.receivedCell = recivedCellFromImageViewCotroller
-//            //            detailViewController.detailDelegate = self
-//        }
-        
-//        if let cell = sender as? UICollectionViewCell,
-//            //indexPath = collectionView?.indexPathForCell(cell),
-//            managePageViewController = segue.destinationViewController as? ManagePageViewController {
-//            managePageViewController.photos = photos
-////            managePageViewController.currentIndex = indexPath.row
-//            managePageViewController.receivedCell = recivedCellFromImageViewCotroller
-//        }
-        
-        if segue.identifier == "showPhotoPage" {
-            let managePageViewController = segue.destinationViewController as? ManagePageViewController
+        if segue.identifier == "imageDetailShow" { // not work already but!-> it can be useful in the future
+            let detailViewController = segue.destinationViewController as! ImageViewDetailController
             
-            managePageViewController!.photos = photos
-            managePageViewController!.receivedCell = recivedCellFromImageViewCotroller
+            detailViewController.receivedCell = recivedCellFromImageViewCotroller
+            //            detailViewController.detailDelegate = self
+        } else
+            if segue.identifier == "showPhotoPage" {
+                let managePageViewController = segue.destinationViewController as? ManagePageViewController
+                
+                managePageViewController!.photos = photos
+                managePageViewController!.receivedCell = recivedCellFromImageViewCotroller
         }
-        
     }
     
     //MARK: Delgate: workWhithControllerViewFromImageCollectionView
@@ -154,7 +144,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
             self.currentPage += 1
             self.populatingPhotos = false
         }
-//        populatingPhotos = false
+        //        populatingPhotos = false
     }
 }
 
