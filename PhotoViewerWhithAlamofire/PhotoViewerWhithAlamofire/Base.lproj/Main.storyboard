@@ -167,8 +167,12 @@
         <!--Manage Page View Controller-->
         <scene sceneID="wTq-t9-8k8">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" pageSpacing="8" navigationOrientation="horizontal" spineLocation="none" id="366-Jb-P47" customClass="ManagePageViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="XDs-7G-fSh">
+                    <rect key="frame" x="0.0" y="0.0" width="39" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </pageControl>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AO3-0Q-pEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" pageSpacing="8" navigationOrientation="horizontal" spineLocation="none" id="366-Jb-P47" customClass="ManagePageViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1644" y="280"/>
         </scene>

@@ -71,7 +71,8 @@ extension ManagePageViewController: SetViewParametersOnPageManager{
     func setViewParametresOfNavigationItem (title: String!) {
         navigationItem.title = title ?? ""
         
-        pageControl.currentPage = { ()-> Int in var valueToReturn: Int = 0
+        pageControl.currentPage = { ()-> Int in
+            var valueToReturn: Int = 0
             
             if currentIndex != nil && currentIndex > 0 && photos.count > maxViewPagesOnUIPageControl {
                 valueToReturn = max(0,(currentIndex/(photos.count/maxViewPagesOnUIPageControl)) - 1)
@@ -79,7 +80,10 @@ extension ManagePageViewController: SetViewParametersOnPageManager{
                 valueToReturn = currentIndex
             }
             
-            return valueToReturn}();
+            print("value = ", valueToReturn)
+            
+            return valueToReturn
+        }();
     }
 }
 
@@ -120,7 +124,7 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0//pageControl.currentPage//currentIndex ?? 0
+        return pageControl.currentPage//currentIndex ?? 0
        
     }
     
