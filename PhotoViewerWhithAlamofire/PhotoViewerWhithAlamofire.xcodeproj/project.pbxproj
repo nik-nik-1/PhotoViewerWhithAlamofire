@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06DCDF4D726943F783822AB8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B573C026ED555F9F39305C18 /* Pods.framework */; };
-		92FC8F590B10F13DD6911687 /* Pods_PhotoViewerWhithAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */; };
 		E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */; };
 		E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */; };
 		E706376F1CC7CE2E00C2F7EE /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E706376E1CC7CE2E00C2F7EE /* GeneralFunctions.swift */; };
@@ -18,7 +16,6 @@
 		E723FEE91CBE6D8F00234275 /* PopularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEE81CBE6D8F00234275 /* PopularImage.swift */; };
 		E723FEEB1CBE845500234275 /* ImageViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEEA1CBE845500234275 /* ImageViewCotroller.swift */; };
 		E723FEED1CBE84E200234275 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEEC1CBE84E200234275 /* ImageCollectionView.swift */; };
-		E723FEEF1CBE854A00234275 /* ImageCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEEE1CBE854A00234275 /* ImageCollectionController.swift */; };
 		E723FEF11CBE862700234275 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEF01CBE862700234275 /* ImageCollectionViewCell.swift */; };
 		E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEF41CBE898B00234275 /* ImageViewDetailController.swift */; };
 		E723FEF71CBE8D0300234275 /* ImageGridFlowLayuot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723FEF61CBE8D0300234275 /* ImageGridFlowLayuot.swift */; };
@@ -34,12 +31,9 @@
 
 /* Begin PBXFileReference section */
 		0985320A46D30ABB22ED67F4 /* Pods-PhotoViewerWhithAlamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewerWhithAlamofire.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire.release.xcconfig"; sourceTree = "<group>"; };
-		172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewerWhithAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C1623A7FA52768D91545DB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6C589A5615DA195CEE425BE5 /* Pods-PhotoViewerWhithAlamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewerWhithAlamofire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire.debug.xcconfig"; sourceTree = "<group>"; };
 		9DD6B012C12A31939ABAD733 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B573C026ED555F9F39305C18 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E70637691CC5040A00C2F7EE /* PhotoInfoWhithObjMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoWhithObjMap.swift; path = PhotoViewerWhithAlamofire/Model/PhotoInfoWhithObjMap.swift; sourceTree = "<group>"; };
 		E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePageViewController.swift; sourceTree = "<group>"; };
 		E706376E1CC7CE2E00C2F7EE /* GeneralFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		E70637701CC9749800C2F7EE /* reedMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = reedMe.rtf; sourceTree = "<group>"; };
@@ -48,7 +42,6 @@
 		E723FEE81CBE6D8F00234275 /* PopularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularImage.swift; sourceTree = "<group>"; };
 		E723FEEA1CBE845500234275 /* ImageViewCotroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewCotroller.swift; sourceTree = "<group>"; };
 		E723FEEC1CBE84E200234275 /* ImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
-		E723FEEE1CBE854A00234275 /* ImageCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionController.swift; sourceTree = "<group>"; };
 		E723FEF01CBE862700234275 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E723FEF41CBE898B00234275 /* ImageViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewDetailController.swift; sourceTree = "<group>"; };
 		E723FEF61CBE8D0300234275 /* ImageGridFlowLayuot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGridFlowLayuot.swift; sourceTree = "<group>"; };
@@ -70,8 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06DCDF4D726943F783822AB8 /* Pods.framework in Frameworks */,
-				92FC8F590B10F13DD6911687 /* Pods_PhotoViewerWhithAlamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,24 +80,52 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		20376717CF4C4E5743ACB4C0 /* Frameworks */ = {
+		E75139C81CD1E6D800DB1E66 /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B573C026ED555F9F39305C18 /* Pods.framework */,
-				172F4D6FEDE5767C960325A5 /* Pods_PhotoViewerWhithAlamofire.framework */,
+				E75139CA1CD1E6D800DB1E66 /* Model */,
+				E75139CC1CD1E6D800DB1E66 /* ViewModel */,
+				E75139CB1CD1E6D800DB1E66 /* View */,
+				E75139C91CD1E6D800DB1E66 /* Helpers */,
 			);
-			name = Frameworks;
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		E75139C91CD1E6D800DB1E66 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E75139CA1CD1E6D800DB1E66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E75139CB1CD1E6D800DB1E66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E75139CC1CD1E6D800DB1E66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E7A608161CBE4AD700C51912 = {
 			isa = PBXGroup;
 			children = (
-				E70637691CC5040A00C2F7EE /* PhotoInfoWhithObjMap.swift */,
 				E7A608391CBE4ED900C51912 /* Podfile */,
 				E7A608211CBE4AD700C51912 /* PhotoViewerWhithAlamofire */,
 				E7A608201CBE4AD700C51912 /* Products */,
 				1DB7810FB3B761E4058F452E /* Pods */,
-				20376717CF4C4E5743ACB4C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +140,7 @@
 		E7A608211CBE4AD700C51912 /* PhotoViewerWhithAlamofire */ = {
 			isa = PBXGroup;
 			children = (
+				E75139C81CD1E6D800DB1E66 /* SettingsScreen */,
 				E7A608221CBE4AD700C51912 /* AppDelegate.swift */,
 				E7A608351CBE4CF400C51912 /* Helpers */,
 				E7A608361CBE4CF400C51912 /* Model */,
@@ -135,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				E723FEEA1CBE845500234275 /* ImageViewCotroller.swift */,
-				E723FEEE1CBE854A00234275 /* ImageCollectionController.swift */,
 				E723FEF41CBE898B00234275 /* ImageViewDetailController.swift */,
 				E706376C1CC7C04700C2F7EE /* ManagePageViewController.swift */,
 			);
@@ -312,7 +331,6 @@
 			files = (
 				E723FEF91CBE967600234275 /* PhotoInfo.swift in Sources */,
 				E723FEFB1CBE96DD00234275 /* PhotoComment.swift in Sources */,
-				E723FEEF1CBE854A00234275 /* ImageCollectionController.swift in Sources */,
 				E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */,
 				E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */,
 				E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */,

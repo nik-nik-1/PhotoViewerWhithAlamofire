@@ -20,17 +20,19 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     
     var photos:[PhotoInfoOM] = []{//[NSOrderedSet] = []{
         didSet {
-            
             collectionView.photos = photos
         }
     }
     
     private var tapPressGesture: UITapGestureRecognizer!
     
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    //    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-    let gridFlowLayout = ImageGridFlowLayout()
+    // create swipe gesture
+    private var swipeGestureLeft: UISwipeGestureRecognizer!
+    private var swipeGestureRight: UISwipeGestureRecognizer!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    let gridFlowLayout = ImageGridFlowLayout()
     
     @IBOutlet weak var collectionView: ImageCollectionView!
     @IBAction func refreshImageData(sender: AnyObject) {
@@ -52,13 +54,17 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         
         collectionView.collectionViewLayout = gridFlowLayout
         
-        //        spinner.center = CGPoint(x: view.center.x, y: view.center.y - view.bounds.origin.y / 2.0)
-        //        spinner.hidesWhenStopped = true
-        
         tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleTapGesture(_:)))
         tapPressGesture.cancelsTouchesInView = false;
         self.collectionView.addGestureRecognizer(tapPressGesture)
         
+        swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleGestureLeft(_:)))
+        self.swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(self.swipeGestureLeft)
+        
+        swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleGestureRight (_:)))
+        self.swipeGestureRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(self.swipeGestureRight)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -167,6 +173,12 @@ extension ImageViewCotroller{
         }
     }
     
+    func handleGestureLeft(gesture: UITapGestureRecognizer) {
+        
+    }
     
+    func handleGestureRight(gesture: UITapGestureRecognizer) {
+        
+    }
     
 }
