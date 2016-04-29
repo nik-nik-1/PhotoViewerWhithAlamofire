@@ -174,11 +174,16 @@ extension ImageViewCotroller{
     }
     
     func handleGestureLeft(gesture: UITapGestureRecognizer) {
+        //navigationController?.popViewControllerAnimated(true)
         
     }
     
     func handleGestureRight(gesture: UITapGestureRecognizer) {
+        let settingsViewController = storyboard!.instantiateViewControllerWithIdentifier("SettingsVC")
+        settingsViewController.modalPresentationStyle = .FormSheet
+//        self.presentViewController(settingsViewController, animated: true, completion: nil)
         
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
 }
