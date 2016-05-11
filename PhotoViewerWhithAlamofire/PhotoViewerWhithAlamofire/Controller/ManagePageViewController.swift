@@ -80,7 +80,7 @@ extension ManagePageViewController: SetViewParametersOnPageManager{
                 valueToReturn = currentIndex
             }
             
-            print("value = ", valueToReturn)
+//            print("value = ", valueToReturn)
             
             return valueToReturn
         }();

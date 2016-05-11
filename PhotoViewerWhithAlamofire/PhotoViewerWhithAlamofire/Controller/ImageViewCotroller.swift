@@ -146,11 +146,12 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
             dispatch_async(dispatch_get_main_queue()) {
                 self.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 self.spinner.stopAnimating()
+                self.currentPage += 1
             }
-            self.currentPage += 1
+           
             self.populatingPhotos = false
         }
-        //        populatingPhotos = false
+          //      populatingPhotos = false
     }
 }
 
