@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PhotoViewerWhithAlamofire/Alamofire.framework"
   install_framework "Pods-PhotoViewerWhithAlamofire/AlamofireObjectMapper.framework"
   install_framework "Pods-PhotoViewerWhithAlamofire/ObjectMapper.framework"
+  install_framework "Pods-PhotoViewerWhithAlamofire/SlideMenuControllerSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PhotoViewerWhithAlamofire/Alamofire.framework"
   install_framework "Pods-PhotoViewerWhithAlamofire/AlamofireObjectMapper.framework"
   install_framework "Pods-PhotoViewerWhithAlamofire/ObjectMapper.framework"
+  install_framework "Pods-PhotoViewerWhithAlamofire/SlideMenuControllerSwift.framework"
 fi

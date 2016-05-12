@@ -13,6 +13,7 @@ struct GeneralValues {
     static let urlOf500px: String = "https://api.500px.com/v1"
     static var pageToLoad: Int = 0
     static var feature:String = "popular"
+    static let alphaChannelForSideMenu:CGFloat = 0.8
     
 //    //This will customize the colors of the UIPageControl :
 //    var pageControl:UIControl {let pageControl = UIPageControl.appearance()

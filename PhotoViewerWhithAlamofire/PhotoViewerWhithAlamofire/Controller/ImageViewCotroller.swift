@@ -1,5 +1,5 @@
 //
-//  ImageViewCotroller.swift
+//  ImageViewController.swift
 //  PhotoViewerWhithAlamofire
 //
 //  Created by mc373 on 13.04.16.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
-class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageCollectionView {
+class ImageViewController: UIViewController, workWhithControllerViewFromImageCollectionView {
     
     var currentPage:Int = 0{
         didSet {
@@ -16,7 +17,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         }
     }
     var populatingPhotos: Bool = false
-    var recivedCellFromImageViewCotroller:PhotoInfoOM?
+    var recivedCellFromImageViewController:PhotoInfoOM?
     
     var photos:[PhotoInfoOM] = []{//[NSOrderedSet] = []{
         didSet {
@@ -47,6 +48,13 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         setupInit()
         //        view.addSubview(spinner)
         refreshImageData()
+        
+        self.slideMenuController()?.closeLeft()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarItem()
     }
     
     func setupInit() {
@@ -54,17 +62,17 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         
         collectionView.collectionViewLayout = gridFlowLayout
         
-        tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleTapGesture(_:)))
+        tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.handleTapGesture(_:)))
         tapPressGesture.cancelsTouchesInView = false;
         self.collectionView.addGestureRecognizer(tapPressGesture)
         
-        swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleGestureLeft(_:)))
-        self.swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(self.swipeGestureLeft)
-        
-        swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewCotroller.handleGestureRight (_:)))
-        self.swipeGestureRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(self.swipeGestureRight)
+//        swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureLeft(_:)))
+//        self.swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.Left
+//        self.view.addGestureRecognizer(self.swipeGestureLeft)
+//        
+//        swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureRight (_:)))
+//        self.swipeGestureRight.direction = UISwipeGestureRecognizerDirection.Right
+//        self.view.addGestureRecognizer(self.swipeGestureRight)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -72,20 +80,20 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
         if segue.identifier == "imageDetailShow" { // not work already but!-> it can be useful in the future
             let detailViewController = segue.destinationViewController as! ImageViewDetailController
             
-            detailViewController.receivedCell = recivedCellFromImageViewCotroller
+            detailViewController.receivedCell = recivedCellFromImageViewController
             //            detailViewController.detailDelegate = self
         } else
             if segue.identifier == "showPhotoPage" {
                 let managePageViewController = segue.destinationViewController as? ManagePageViewController
                 
                 managePageViewController!.photos = photos
-                managePageViewController!.receivedCell = recivedCellFromImageViewCotroller
+                managePageViewController!.receivedCell = recivedCellFromImageViewController
         }
     }
     
     //MARK: Delgate: workWhithControllerViewFromImageCollectionView
     func setCorrectActiveCellInView(activeItem: PhotoInfoOM?) {
-        recivedCellFromImageViewCotroller = activeItem
+        recivedCellFromImageViewController = activeItem
     }
     
     func getMorePhoto (scrollView:UIScrollView){
@@ -155,7 +163,7 @@ class ImageViewCotroller: UIViewController, workWhithControllerViewFromImageColl
     }
 }
 
-extension ImageViewCotroller{
+extension ImageViewController{
     
     //Gesture
     func handleTapGesture(gesture: UITapGestureRecognizer) {
@@ -180,11 +188,47 @@ extension ImageViewCotroller{
     }
     
     func handleGestureRight(gesture: UITapGestureRecognizer) {
-        let settingsViewController = storyboard!.instantiateViewControllerWithIdentifier("SettingsVC")
-        settingsViewController.modalPresentationStyle = .FormSheet
-//        self.presentViewController(settingsViewController, animated: true, completion: nil)
-        
-        self.navigationController?.pushViewController(settingsViewController, animated: true)
+//        let LeftSettingsViewController = storyboard!.instantiateViewControllerWithIdentifier("LeftViewController")
+//        LeftSettingsViewController.modalPresentationStyle = .FormSheet
+////        self.presentViewController(settingsViewController, animated: true, completion: nil)
+//        
+//        self.navigationController?.pushViewController(LeftSettingsViewController, animated: true)
     }
     
 }
+
+extension ImageViewController : SlideMenuControllerDelegate {
+    
+    func leftWillOpen() {
+        print("SlideMenuControllerDelegate: leftWillOpen")
+    }
+    
+    func leftDidOpen() {
+        print("SlideMenuControllerDelegate: leftDidOpen")
+    }
+    
+    func leftWillClose() {
+        print("SlideMenuControllerDelegate: leftWillClose")
+    }
+    
+    func leftDidClose() {
+        print("SlideMenuControllerDelegate: leftDidClose")
+    }
+    
+    func rightWillOpen() {
+        print("SlideMenuControllerDelegate: rightWillOpen")
+    }
+    
+    func rightDidOpen() {
+        print("SlideMenuControllerDelegate: rightDidOpen")
+    }
+    
+    func rightWillClose() {
+        print("SlideMenuControllerDelegate: rightWillClose")
+    }
+    
+    func rightDidClose() {
+        print("SlideMenuControllerDelegate: rightDidClose")
+    }
+}
+

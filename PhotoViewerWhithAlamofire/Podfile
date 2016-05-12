@@ -7,4 +7,5 @@ target 'PhotoViewerWhithAlamofire' do
  pod 'Alamofire', '~> 3.3'
  pod 'AlamofireObjectMapper', '~> 3.0'
  pod 'ObjectMapper', '~> 1.2'
+ pod 'SlideMenuControllerSwift'
 end

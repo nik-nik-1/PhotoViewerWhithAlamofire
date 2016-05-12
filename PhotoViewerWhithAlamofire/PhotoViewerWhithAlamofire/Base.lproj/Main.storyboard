@@ -9,7 +9,7 @@
         <!--Image view-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ImageViewCotroller" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ImageViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -78,7 +78,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5Fu-Fq-ALA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DTi-Ad-S0G"/>
@@ -108,7 +108,7 @@
         <!--Settings-->
         <scene sceneID="pWc-a2-iOm">
             <objects>
-                <viewController storyboardIdentifier="SettingsVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RQ3-fN-I7f" customClass="SettingsViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeftViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RQ3-fN-I7f" customClass="LeftSettingsViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="niP-Dx-wXc"/>
                         <viewControllerLayoutGuide type="bottom" id="9n7-So-pJJ"/>
@@ -143,10 +143,37 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="16g-ox-Znl"/>
+                    <connections>
+                        <outlet property="settingContainer1" destination="BQ0-jW-uQ4" id="j7z-cF-h9G"/>
+                        <outlet property="settingContainer2" destination="Cns-Pe-0LA" id="A47-N5-0wS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eaq-tB-Kgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1787" y="1085"/>
+        </scene>
+        <!--Right Settings View Controller-->
+        <scene sceneID="4EC-kL-Zcr">
+            <objects>
+                <viewController storyboardIdentifier="RightViewController" id="g1t-7W-gzt" customClass="RightSettingsViewController" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XaL-HW-y1K"/>
+                        <viewControllerLayoutGuide type="bottom" id="SJM-uQ-RJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="58C-3a-CbI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5gs-4V-p60">
+                                <rect key="frame" x="213" y="271" width="150" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yk-9D-Xca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786" y="1747"/>
         </scene>
         <!--Detail view-->
         <scene sceneID="iGB-Zu-tnq">
@@ -184,7 +211,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ChJ-Jh-K16" firstAttribute="leading" secondItem="f4m-Uo-xWg" secondAttribute="leading" id="5pU-lO-nBp"/>
                             <constraint firstAttribute="trailing" secondItem="ChJ-Jh-K16" secondAttribute="trailing" id="fgG-xc-ZPR"/>
@@ -240,7 +267,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Tju-ef-Ube">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="364"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Refresh Time" id="irK-js-EB1">
                                 <cells>
@@ -260,7 +287,7 @@
                                                         <constraint firstAttribute="width" constant="153" id="5mp-97-hM5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -293,7 +320,7 @@
                                                         <constraint firstAttribute="width" constant="79" id="TpX-jn-VHt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -338,7 +365,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpl-A2-wZa">
                                                     <rect key="frame" x="277" y="8" width="46" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
