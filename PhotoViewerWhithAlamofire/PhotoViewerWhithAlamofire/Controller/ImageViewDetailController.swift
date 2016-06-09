@@ -81,18 +81,31 @@ class ImageViewDetailController: UIViewController {
         
         if receivedCell != nil {
             
-            let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: imageIdStr)
-            JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
+//            let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: imageIdStr)
+//            JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
+//                
+//                self.image = Image
+//                //                self.imageView.image = Image
+//                //                self.imageView.frame = CGRect(x: 0, y: 0, width: Image.size.height, height: Image.size.width)
+//                //               self.imageView.sizeToFit()
+//                
+//                //                self.scrollView.contentSize = self.imageView.frame.size
+//                
+//                //                self.spinner.stopAnimating()
+//            }
+            
+            dispatch_async(GlobalUserInitiatedQueue) { // 1
                 
-                self.image = Image
-                //                self.imageView.image = Image
-                //                self.imageView.frame = CGRect(x: 0, y: 0, width: Image.size.height, height: Image.size.width)
-                //               self.imageView.sizeToFit()
-                
-                //                self.scrollView.contentSize = self.imageView.frame.size
-                
-                //                self.spinner.stopAnimating()
+                let Router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: self.imageIdStr)
+                JSONWork.getImageFromJSONData(Router) {(Image: UIImage) -> Void in
+                    
+                    dispatch_async(GlobalMainQueue) { // 2
+                        self.image = Image
+                        
+                    }
+                }
             }
+
             
         }
         

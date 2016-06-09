@@ -9,6 +9,9 @@
 import UIKit
 import SlideMenuControllerSwift
 
+/// Notification when new photo instances are added
+let PhotoMAddedContentNotification = "test.PhotoViewerWhithAlamofire"
+
 class ImageViewController: UIViewController, workWhithControllerViewFromImageCollectionView {
     
     var currentPage:Int = 0{
@@ -19,11 +22,37 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
     var populatingPhotos: Bool = false
     var recivedCellFromImageViewController:PhotoInfoOM?
     
-    var photos:[PhotoInfoOM] = []{//[NSOrderedSet] = []{
+    private var addedContentObserver: NSObjectProtocol!
+
+    
+    private var ptotosInstance:[PhotoInfoOM] = [] //[NSOrderedSet] = []{
+        {
         didSet {
-            collectionView.photos = photos
+            collectionView.photos = ptotosInstance
+            
+            showOrHideNavPrompt()
         }
     }
+   
+    var photos:[PhotoInfoOM] {
+        get {
+            var photosCopy: [PhotoInfoOM]!
+            dispatch_sync(concurrentPhotoQueue) { // 1
+                photosCopy = self.ptotosInstance // 2
+            }
+            return photosCopy
+        }
+        set (newValue){
+//            dispatch_barrier_async(concurrentPhotoQueue) {
+                self.ptotosInstance = newValue
+//                dispatch_async(GlobalMainQueue) { // 3
+//                    self.postContentAddedNotification()
+//                }
+//            }
+        }
+    }
+    
+    private let concurrentPhotoQueue = dispatch_queue_create("test.PhotoViewerWhithAlamofire.photoQueue", DISPATCH_QUEUE_CONCURRENT)
     
     private var tapPressGesture: UITapGestureRecognizer!
     
@@ -36,6 +65,7 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
     let gridFlowLayout = ImageGridFlowLayout()
     
     @IBOutlet weak var collectionView: ImageCollectionView!
+    
     @IBAction func refreshImageData(sender: AnyObject) {
         refreshImageData ()
     }
@@ -48,10 +78,8 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
         setupInit()
         //        view.addSubview(spinner)
         refreshImageData()
-        
-        
     }
-    
+     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
@@ -59,23 +87,19 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
         self.slideMenuController()?.closeLeft()
     }
     
-    func setupInit() {
-        currentPage = 0
-        
-        collectionView.collectionViewLayout = gridFlowLayout
-        
-        tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.handleTapGesture(_:)))
-        tapPressGesture.cancelsTouchesInView = false;
-        self.collectionView.addGestureRecognizer(tapPressGesture)
-        
-//        swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureLeft(_:)))
-//        self.swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.Left
-//        self.view.addGestureRecognizer(self.swipeGestureLeft)
-//        
-//        swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureRight (_:)))
-//        self.swipeGestureRight.direction = UISwipeGestureRecognizerDirection.Right
-//        self.view.addGestureRecognizer(self.swipeGestureRight)
+    override func viewDidAppear(animated: Bool) {
+        showOrHideNavPrompt()
     }
+    
+    
+    deinit {
+        let nc = NSNotificationCenter.defaultCenter()
+        
+        if addedContentObserver != nil {
+            nc.removeObserver(addedContentObserver)
+        }
+    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -104,33 +128,39 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
         }
     }
     
-    func refreshImageData () {
-        
-        
-        if populatingPhotos {
-            return
-        }
-        populatingPhotos = true
-        
+//    func refreshImageData () {
+//        
+//        
+//        if populatingPhotos {
+//            return
+//        }
+//        populatingPhotos = true
+//        
+//        currentPage = 0
+//        
+//        spinner.startAnimating()
+//        
+//        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
+//        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
+//            
+//            //self.photos.addObjectsFromArray(photoInfos)
+//            self.photos = photoInfos
+//            dispatch_async(GlobalMainQueue) {
+//                
+//                self.collectionView.reloadData()
+//                self.spinner.stopAnimating()
+//                
+//                self.currentPage += 1
+//            }
+//            self.populatingPhotos = false
+//        }
+//        
+//    }
+    
+    private func refreshImageData () {
         currentPage = 0
-        
-        spinner.startAnimating()
-        
-        let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
-        JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
-            
-            //self.photos.addObjectsFromArray(photoInfos)
-            self.photos = photoInfos
-            dispatch_async(dispatch_get_main_queue()) {
-                
-                self.collectionView.reloadData()
-                self.spinner.stopAnimating()
-                
-                self.currentPage += 1
-            }
-            self.populatingPhotos = false
-        }
-        
+        photos = []
+        getMorePhotoFromURL()
     }
     
     func getMorePhotoFromURL(){
@@ -142,9 +172,36 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
         
         spinner.startAnimating()
         
+        dispatch_barrier_async(concurrentPhotoQueue) {
+            
         let Router = Router500px(imageSize: Five100px.ImageSize.Tiny)
         JSONWork.getJSONDataFromURl(Router) {(photoInfos) -> Void in
             
+//            let lastItem = self.photos.count
+//            
+//            self.collectionView.updateCollectionWhenAddednewElement = false
+//            self.photos += photoInfos
+//            self.collectionView.updateCollectionWhenAddednewElement = true
+//            
+//            let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
+//            
+//            dispatch_async(GlobalMainQueue) {
+//                self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+//                self.spinner.stopAnimating()
+//                self.currentPage += 1
+//            }
+           
+            self.addNewPhotoToArray (photoInfos)
+            
+            self.populatingPhotos = false
+        }
+        }
+          //      populatingPhotos = false
+    }
+    
+    private func addNewPhotoToArray (photoInfos:[PhotoInfoOM]) {
+        
+//        dispatch_barrier_async(concurrentPhotoQueue) {
             let lastItem = self.photos.count
             
             self.collectionView.updateCollectionWhenAddednewElement = false
@@ -153,20 +210,76 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
             
             let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
             
-            dispatch_async(dispatch_get_main_queue()) {
+            dispatch_async(GlobalMainQueue) {
                 self.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 self.spinner.stopAnimating()
                 self.currentPage += 1
-            }
-           
-            self.populatingPhotos = false
+//                // 3
+//                self.postContentAddedNotification()
+            //}
         }
-          //      populatingPhotos = false
+        
     }
+    
+    
 }
+
 
 extension ImageViewController{
     
+    //MARK: Init. help func
+    func setupInit() {
+        currentPage = 0
+        
+        collectionView.collectionViewLayout = gridFlowLayout
+        
+        tapPressGesture = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.handleTapGesture(_:)))
+        tapPressGesture.cancelsTouchesInView = false;
+        self.collectionView.addGestureRecognizer(tapPressGesture)
+        
+        //        swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureLeft(_:)))
+        //        self.swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.Left
+        //        self.view.addGestureRecognizer(self.swipeGestureLeft)
+        //
+        //        swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(ImageViewController.handleGestureRight (_:)))
+        //        self.swipeGestureRight.direction = UISwipeGestureRecognizerDirection.Right
+        //        self.view.addGestureRecognizer(self.swipeGestureRight)
+        
+        addedContentObserver = NSNotificationCenter.defaultCenter().addObserverForName(PhotoMAddedContentNotification,
+                                                                                       object: nil,
+                                                                                       queue: NSOperationQueue.mainQueue()) { notification in
+                                                                                        self.contentChangedNotification(notification)
+        }
+        
+    }
+
+    
+    //MARK: GCD
+    func contentChangedNotification(notification: NSNotification!) {
+        collectionView?.reloadData()
+        showOrHideNavPrompt();
+    }
+    
+    func showOrHideNavPrompt() {
+        // Implement me!
+        let delayInSeconds = 2.0
+        let popTime = dispatch_time(DISPATCH_TIME_NOW,
+                                    Int64(delayInSeconds * Double(NSEC_PER_SEC))) // 1
+        dispatch_after(popTime, GlobalMainQueue) { // 2
+            let count = self.photos.count
+            if count > 0 {
+                self.navigationItem.prompt = nil
+            } else {
+                self.navigationItem.prompt = "Tap \"Update button\" to update photos"
+            }
+        }
+    }
+    
+//    private func postContentAddedNotification() {
+//        NSNotificationCenter.defaultCenter().postNotificationName(PhotoMAddedContentNotification, object: nil)
+//    }
+
+
     //Gesture
     func handleTapGesture(gesture: UITapGestureRecognizer) {
         

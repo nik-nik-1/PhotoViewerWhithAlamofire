@@ -25,6 +25,7 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
         }
     }
 
+    
     var updateCollectionWhenAddednewElement:Bool = true
     var controllerDelegate: workWhithControllerViewFromImageCollectionView?;
     
