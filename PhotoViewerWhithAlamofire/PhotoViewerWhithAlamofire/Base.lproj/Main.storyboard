@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Fu-Fq-ALA" customClass="ImageCollectionView" customModule="PhotoViewerWhithAlamofire" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <rect key="frame" x="5" y="72" width="589" height="520"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b0A-qA-T92">
@@ -81,8 +81,8 @@
                         <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="5Fu-Fq-ALA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DTi-Ad-S0G"/>
-                            <constraint firstItem="5Fu-Fq-ALA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Dsl-mN-cGE"/>
+                            <constraint firstItem="5Fu-Fq-ALA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="14" id="DTi-Ad-S0G"/>
+                            <constraint firstItem="5Fu-Fq-ALA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-15" id="Dsl-mN-cGE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Fu-Fq-ALA" secondAttribute="bottom" constant="8" symbolic="YES" id="lIw-ou-emZ"/>
                             <constraint firstItem="5Fu-Fq-ALA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="map-UT-k9M"/>
                             <constraint firstItem="tCu-eG-jjf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rLW-ji-hJS"/>
@@ -123,7 +123,7 @@
                                     <segue destination="i3B-4L-uiw" kind="embed" id="KAA-3U-J4A"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="settingContainer2" translatesAutoresizingMaskIntoConstraints="NO" id="Cns-Pe-0LA" userLabel="settingContainer2">
+                            <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" verticalHuggingPriority="245" horizontalCompressionResistancePriority="746" verticalCompressionResistancePriority="746" restorationIdentifier="settingContainer2" translatesAutoresizingMaskIntoConstraints="NO" id="Cns-Pe-0LA" userLabel="settingContainer2">
                                 <rect key="frame" x="0.0" y="363" width="600" height="237"/>
                                 <connections>
                                     <segue destination="S07-fC-e5O" kind="embed" id="2KR-hn-JK0"/>

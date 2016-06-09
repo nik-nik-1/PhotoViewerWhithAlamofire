@@ -49,12 +49,14 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
         //        view.addSubview(spinner)
         refreshImageData()
         
-        self.slideMenuController()?.closeLeft()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        
+        self.slideMenuController()?.closeLeft()
     }
     
     func setupInit() {
