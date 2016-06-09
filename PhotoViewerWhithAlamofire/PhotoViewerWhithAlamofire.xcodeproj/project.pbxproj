@@ -29,6 +29,7 @@
 		E7A6082A1CBE4AD700C51912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A608291CBE4AD700C51912 /* Assets.xcassets */; };
 		E7A6082D1CBE4AD700C51912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A6082B1CBE4AD700C51912 /* LaunchScreen.storyboard */; };
 		E7A6083A1CBE4ED900C51912 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E7A608391CBE4ED900C51912 /* Podfile */; };
+		E7D001191D097B9800A26114 /* UIView_Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001181D097B9800A26114 /* UIView_Borders.swift */; };
 		E7D95CE71CE38CE800207B9B /* RightSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CE61CE38CE800207B9B /* RightSettingsViewController.swift */; };
 		E7D95CEA1CE47D6600207B9B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CE91CE47D6600207B9B /* UIColor.swift */; };
 		E7D95CEC1CE47F1000207B9B /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CEB1CE47F1000207B9B /* ExSlideMenuController.swift */; };
@@ -66,6 +67,7 @@
 		E7A6082C1CBE4AD700C51912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A6082E1CBE4AD700C51912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		E7A608391CBE4ED900C51912 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E7D001181D097B9800A26114 /* UIView_Borders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Borders.swift; sourceTree = "<group>"; };
 		E7D95CE61CE38CE800207B9B /* RightSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightSettingsViewController.swift; sourceTree = "<group>"; };
 		E7D95CE91CE47D6600207B9B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E7D95CEB1CE47F1000207B9B /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
@@ -105,7 +107,6 @@
 				E75139CA1CD1E6D800DB1E66 /* Model */,
 				E75139CC1CD1E6D800DB1E66 /* ViewModel */,
 				E75139CB1CD1E6D800DB1E66 /* View */,
-				E75139C91CD1E6D800DB1E66 /* Helpers */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -113,9 +114,11 @@
 		E75139C91CD1E6D800DB1E66 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E7D001181D097B9800A26114 /* UIView_Borders.swift */,
 				E7D95CE81CE47D6600207B9B /* Extension */,
 			);
-			path = Helpers;
+			name = Helpers;
+			path = SettingsScreen/Helpers;
 			sourceTree = "<group>";
 		};
 		E75139CA1CD1E6D800DB1E66 /* Model */ = {
@@ -164,13 +167,12 @@
 		E7A608211CBE4AD700C51912 /* PhotoViewerWhithAlamofire */ = {
 			isa = PBXGroup;
 			children = (
+				E7A608351CBE4CF400C51912 /* Helpers */,
+				E7D001171D097AD300A26114 /* MainScreen */,
 				E75139C81CD1E6D800DB1E66 /* SettingsScreen */,
 				E7A608221CBE4AD700C51912 /* AppDelegate.swift */,
-				E7A608351CBE4CF400C51912 /* Helpers */,
-				E7A608361CBE4CF400C51912 /* Model */,
-				E7A608381CBE4D7A00C51912 /* View */,
-				E7A608341CBE4CF400C51912 /* Controller */,
 				E7A608371CBE4D7A00C51912 /* SourseFile */,
+				E75139C91CD1E6D800DB1E66 /* Helpers */,
 			);
 			path = PhotoViewerWhithAlamofire;
 			sourceTree = "<group>";
@@ -228,6 +230,16 @@
 				E723FEF61CBE8D0300234275 /* ImageGridFlowLayuot.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E7D001171D097AD300A26114 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E7A608361CBE4CF400C51912 /* Model */,
+				E7A608381CBE4D7A00C51912 /* View */,
+				E7A608341CBE4CF400C51912 /* Controller */,
+			);
+			name = MainScreen;
 			sourceTree = "<group>";
 		};
 		E7D95CE81CE47D6600207B9B /* Extension */ = {
@@ -380,6 +392,7 @@
 				E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */,
 				E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */,
 				E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */,
+				E7D001191D097B9800A26114 /* UIView_Borders.swift in Sources */,
 				E723FF0B1CBFFFD200234275 /* AlmManager.swift in Sources */,
 				E723FEED1CBE84E200234275 /* ImageCollectionView.swift in Sources */,
 				E7D95CEE1CE480C900207B9B /* UIApplication.swift in Sources */,
