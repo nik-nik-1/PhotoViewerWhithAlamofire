@@ -18,7 +18,11 @@ protocol workWhithControllerViewFromImageCollectionView {
 class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UICollectionViewDelegate{
 
     var photos: [PhotoInfoOM] = [] {//= NSMutableOrderedSet(){
+        willSet (newItems){
+           
+        }
         didSet {
+            
             if self.updateCollectionWhenAddednewElement {
                 self.reloadData()
             }
@@ -50,10 +54,24 @@ class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UIColl
         //cell.delegate = self
         
         let imageItemCell = cell //as! ImageCollectionViewCell
-        let photoItemElem = photos[indexPath.row]
+//        let photoItemElem = photos[indexPath.row]
+//        
+////        if photoItemElem.photoIndex != nil && photoItemElem.photoIndex != indexPath.row {
+////            print("Errror !!!! ")
+////        }
+//        
+//        photoItemElem.photoIndex = indexPath.row
+        //imageItemCell.photoItemElem = photoItemElem
         
-        photoItemElem.photoIndex = indexPath.row
-        imageItemCell.photoItemElem = photoItemElem
+        let massPhotoItemElem = photos.filter( { return $0.photoIndex == indexPath.row })
+        if massPhotoItemElem.count > 0 {
+            imageItemCell.photoItemElem = massPhotoItemElem[0]
+        
+        } else if massPhotoItemElem.count > 1 {
+                
+             print("Errror !!!! ")
+        }
+        
 
         return cell
     }

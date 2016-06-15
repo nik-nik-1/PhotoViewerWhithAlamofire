@@ -213,6 +213,12 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
             
             self.collectionView.updateCollectionWhenAddednewElement = false
             self.photos += photoInfos
+        
+        for index in lastItem...self.photos.count-1 {
+            self.photos[index].photoIndex = index
+        }
+        
+        
             self.collectionView.updateCollectionWhenAddednewElement = true
             
             let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }

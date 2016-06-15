@@ -15,6 +15,12 @@ struct GeneralValues {
     static var feature:String = "popular"
     static let alphaChannelForSideMenu:CGFloat = 0.8
     
+    static var photos: Set<PhotoInfoOM> {//= NSMutableOrderedSet(){
+        get {return GeneralValues.photos}
+        set {self.photos = newValue}
+    }
+
+    
 //    //This will customize the colors of the UIPageControl :
 //    var pageControl:UIControl {let pageControl = UIPageControl.appearance()
 //        pageControl.pageIndicatorTintColor = UIColor.blackColor()
