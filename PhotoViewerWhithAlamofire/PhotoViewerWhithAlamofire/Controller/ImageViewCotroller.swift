@@ -25,26 +25,33 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
     private var addedContentObserver: NSObjectProtocol!
 
     
-    private var ptotosInstance:[PhotoInfoOM] = [] //[NSOrderedSet] = []{
-        {
-        didSet {
-            collectionView.photos = ptotosInstance
-            
-            showOrHideNavPrompt()
-        }
-    }
+//    private var photosInstance:[PhotoInfoOM] = [] //[NSOrderedSet] = []{
+//        {
+//        didSet {
+//            collectionView.photos = photosInstance
+//            
+//            showOrHideNavPrompt()
+//        }
+//    }
    
+    private var photosInstance:[PhotoInfoOM] {
+        get {return collectionView.photos}
+        
+        set {collectionView.photos = newValue
+            showOrHideNavPrompt()}
+    }
+    
     var photos:[PhotoInfoOM] {
         get {
             var photosCopy: [PhotoInfoOM]!
             dispatch_sync(concurrentPhotoQueue) { // 1
-                photosCopy = self.ptotosInstance // 2
+                photosCopy = self.photosInstance // 2
             }
             return photosCopy
         }
         set (newValue){
 //            dispatch_barrier_async(concurrentPhotoQueue) {
-                self.ptotosInstance = newValue
+                self.photosInstance = newValue
 //                dispatch_async(GlobalMainQueue) { // 3
 //                    self.postContentAddedNotification()
 //                }
@@ -193,7 +200,7 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
            
             self.addNewPhotoToArray (photoInfos)
             
-            self.populatingPhotos = false
+//            self.populatingPhotos = false
         }
         }
           //      populatingPhotos = false
@@ -209,13 +216,21 @@ class ImageViewController: UIViewController, workWhithControllerViewFromImageCol
             self.collectionView.updateCollectionWhenAddednewElement = true
             
             let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
-            
+        
             dispatch_async(GlobalMainQueue) {
-                self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                //self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                
+                if lastItem == 0 {
+                    self.collectionView.reloadData()
+                } else {
+                    self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                }
+                
                 self.spinner.stopAnimating()
                 self.currentPage += 1
 //                // 3
 //                self.postContentAddedNotification()
+                 self.populatingPhotos = false
             //}
         }
         
