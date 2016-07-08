@@ -29,14 +29,14 @@
 		E7A6082A1CBE4AD700C51912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A608291CBE4AD700C51912 /* Assets.xcassets */; };
 		E7A6082D1CBE4AD700C51912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A6082B1CBE4AD700C51912 /* LaunchScreen.storyboard */; };
 		E7A6083A1CBE4ED900C51912 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E7A608391CBE4ED900C51912 /* Podfile */; };
-		E7D001191D097B9800A26114 /* UIView_Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001181D097B9800A26114 /* UIView_Borders.swift */; };
-		E7D0011B1D099BB000A26114 /* GCD.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0011A1D099BB000A26114 /* GCD.Utils.swift */; };
+		E7D001871D13F8DE00A26114 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001811D13F8DE00A26114 /* String.swift */; };
+		E7D001881D13F8DE00A26114 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001821D13F8DE00A26114 /* UIApplication.swift */; };
+		E7D001891D13F8DE00A26114 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001831D13F8DE00A26114 /* UIColor.swift */; };
+		E7D0018A1D13F8DE00A26114 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001841D13F8DE00A26114 /* UIViewController.swift */; };
+		E7D0018B1D13F8DE00A26114 /* GCD.Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001851D13F8DE00A26114 /* GCD.Utils.swift */; };
+		E7D0018C1D13F8DE00A26114 /* UIView_Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D001861D13F8DE00A26114 /* UIView_Borders.swift */; };
 		E7D95CE71CE38CE800207B9B /* RightSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CE61CE38CE800207B9B /* RightSettingsViewController.swift */; };
-		E7D95CEA1CE47D6600207B9B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CE91CE47D6600207B9B /* UIColor.swift */; };
 		E7D95CEC1CE47F1000207B9B /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CEB1CE47F1000207B9B /* ExSlideMenuController.swift */; };
-		E7D95CEE1CE480C900207B9B /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CED1CE480C900207B9B /* UIApplication.swift */; };
-		E7D95CF01CE4823D00207B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CEF1CE4823D00207B9B /* String.swift */; };
-		E7D95CF41CE4B34200207B9B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D95CF31CE4B34200207B9B /* UIViewController.swift */; };
 		E7EFC23C1CE1EA7F00F0B3CA /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = E7EFC23B1CE1EA7F00F0B3CA /* noimage.png */; };
 /* End PBXBuildFile section */
 
@@ -68,14 +68,14 @@
 		E7A6082C1CBE4AD700C51912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A6082E1CBE4AD700C51912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		E7A608391CBE4ED900C51912 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E7D001181D097B9800A26114 /* UIView_Borders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Borders.swift; sourceTree = "<group>"; };
-		E7D0011A1D099BB000A26114 /* GCD.Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.Utils.swift; sourceTree = "<group>"; };
+		E7D001811D13F8DE00A26114 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E7D001821D13F8DE00A26114 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		E7D001831D13F8DE00A26114 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		E7D001841D13F8DE00A26114 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		E7D001851D13F8DE00A26114 /* GCD.Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.Utils.swift; sourceTree = "<group>"; };
+		E7D001861D13F8DE00A26114 /* UIView_Borders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Borders.swift; sourceTree = "<group>"; };
 		E7D95CE61CE38CE800207B9B /* RightSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightSettingsViewController.swift; sourceTree = "<group>"; };
-		E7D95CE91CE47D6600207B9B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E7D95CEB1CE47F1000207B9B /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
-		E7D95CED1CE480C900207B9B /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		E7D95CEF1CE4823D00207B9B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		E7D95CF31CE4B34200207B9B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E7EFC23B1CE1EA7F00F0B3CA /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		E7FDB0871CC4FC9F00EB6207 /* PhotoInfoWhithObjMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoWhithObjMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,17 +111,6 @@
 				E75139CB1CD1E6D800DB1E66 /* View */,
 			);
 			path = SettingsScreen;
-			sourceTree = "<group>";
-		};
-		E75139C91CD1E6D800DB1E66 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				E7D0011A1D099BB000A26114 /* GCD.Utils.swift */,
-				E7D001181D097B9800A26114 /* UIView_Borders.swift */,
-				E7D95CE81CE47D6600207B9B /* Extension */,
-			);
-			name = Helpers;
-			path = SettingsScreen/Helpers;
 			sourceTree = "<group>";
 		};
 		E75139CA1CD1E6D800DB1E66 /* Model */ = {
@@ -175,7 +164,6 @@
 				E75139C81CD1E6D800DB1E66 /* SettingsScreen */,
 				E7A608221CBE4AD700C51912 /* AppDelegate.swift */,
 				E7A608371CBE4D7A00C51912 /* SourceFile */,
-				E75139C91CD1E6D800DB1E66 /* Helpers */,
 			);
 			path = PhotoViewerWhithAlamofire;
 			sourceTree = "<group>";
@@ -193,6 +181,7 @@
 		E7A608351CBE4CF400C51912 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E7D0017F1D13F8DE00A26114 /* dop.Helpers */,
 				E723FEE41CBE63AA00234275 /* JSONWork.swift */,
 				E723FEE61CBE69BC00234275 /* GeneralValues.swift */,
 				E723FF0A1CBFFFD200234275 /* AlmManager.swift */,
@@ -246,13 +235,23 @@
 			name = MainScreen;
 			sourceTree = "<group>";
 		};
-		E7D95CE81CE47D6600207B9B /* Extension */ = {
+		E7D0017F1D13F8DE00A26114 /* dop.Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E7D95CF31CE4B34200207B9B /* UIViewController.swift */,
-				E7D95CEF1CE4823D00207B9B /* String.swift */,
-				E7D95CED1CE480C900207B9B /* UIApplication.swift */,
-				E7D95CE91CE47D6600207B9B /* UIColor.swift */,
+				E7D001801D13F8DE00A26114 /* Extension */,
+				E7D001851D13F8DE00A26114 /* GCD.Utils.swift */,
+				E7D001861D13F8DE00A26114 /* UIView_Borders.swift */,
+			);
+			path = dop.Helpers;
+			sourceTree = "<group>";
+		};
+		E7D001801D13F8DE00A26114 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E7D001811D13F8DE00A26114 /* String.swift */,
+				E7D001821D13F8DE00A26114 /* UIApplication.swift */,
+				E7D001831D13F8DE00A26114 /* UIColor.swift */,
+				E7D001841D13F8DE00A26114 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 				E7A6081D1CBE4AD700C51912 /* Resources */,
 				A6F7BB27C9ADEBDAE88D61BF /* Embed Pods Frameworks */,
 				66A51D688EED1B8EC8C7D0DD /* Copy Pods Resources */,
+				E77083E31D2EF9D2000F613D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -383,6 +383,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoViewerWhithAlamofire/Pods-PhotoViewerWhithAlamofire-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E77083E31D2EF9D2000F613D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\necho \"swiftlint\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -390,28 +403,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D001871D13F8DE00A26114 /* String.swift in Sources */,
+				E7D001891D13F8DE00A26114 /* UIColor.swift in Sources */,
 				E7D95CE71CE38CE800207B9B /* RightSettingsViewController.swift in Sources */,
 				E723FEF91CBE967600234275 /* PhotoInfo.swift in Sources */,
+				E7D0018B1D13F8DE00A26114 /* GCD.Utils.swift in Sources */,
 				E723FEFB1CBE96DD00234275 /* PhotoComment.swift in Sources */,
 				E723FEF51CBE898B00234275 /* ImageViewDetailController.swift in Sources */,
 				E706376D1CC7C04700C2F7EE /* ManagePageViewController.swift in Sources */,
+				E7D0018C1D13F8DE00A26114 /* UIView_Borders.swift in Sources */,
 				E706376A1CC5047B00C2F7EE /* PhotoInfoWhithObjMap.swift in Sources */,
-				E7D001191D097B9800A26114 /* UIView_Borders.swift in Sources */,
-				E7D0011B1D099BB000A26114 /* GCD.Utils.swift in Sources */,
 				E723FF0B1CBFFFD200234275 /* AlmManager.swift in Sources */,
+				E7D001881D13F8DE00A26114 /* UIApplication.swift in Sources */,
 				E723FEED1CBE84E200234275 /* ImageCollectionView.swift in Sources */,
-				E7D95CEE1CE480C900207B9B /* UIApplication.swift in Sources */,
 				E75139CE1CD3404F00DB1E66 /* LeftSettingsViewController.swift in Sources */,
 				E706376F1CC7CE2E00C2F7EE /* GeneralFunctions.swift in Sources */,
 				E723FEF11CBE862700234275 /* ImageCollectionViewCell.swift in Sources */,
+				E7D0018A1D13F8DE00A26114 /* UIViewController.swift in Sources */,
 				E723FEF71CBE8D0300234275 /* ImageGridFlowLayuot.swift in Sources */,
 				E723FEE71CBE69BC00234275 /* GeneralValues.swift in Sources */,
-				E7D95CF41CE4B34200207B9B /* UIViewController.swift in Sources */,
-				E7D95CEA1CE47D6600207B9B /* UIColor.swift in Sources */,
 				E723FEEB1CBE845500234275 /* ImageViewCotroller.swift in Sources */,
 				E723FEE51CBE63AA00234275 /* JSONWork.swift in Sources */,
 				E7A608231CBE4AD700C51912 /* AppDelegate.swift in Sources */,
-				E7D95CF01CE4823D00207B9B /* String.swift in Sources */,
 				E723FEE91CBE6D8F00234275 /* PopularImage.swift in Sources */,
 				E7D95CEC1CE47F1000207B9B /* ExSlideMenuController.swift in Sources */,
 			);

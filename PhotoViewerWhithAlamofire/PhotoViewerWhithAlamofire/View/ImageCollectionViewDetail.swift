@@ -10,6 +10,6 @@ import UIKit
 
 class ImageCollectionViewDetail: UIViewController {
 
-    var receivedCell: PhotoInfo?
-    
+	var receivedCell: PhotoInfo?
+
 }

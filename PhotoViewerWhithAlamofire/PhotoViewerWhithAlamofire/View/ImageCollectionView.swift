@@ -9,86 +9,87 @@
 import UIKit
 
 protocol workWhithControllerViewFromImageCollectionView {
-    
-    func setCorrectActiveCellInView(activeItem:PhotoInfoOM?)
-    func getMorePhoto(scrollView:UIScrollView)
-    
+
+	func setCorrectActiveCellInView(activeItem: PhotoInfoOM?)
+	func getMorePhoto(scrollView: UIScrollView)
+
 }
 
-class ImageCollectionView: UICollectionView , UICollectionViewDataSource, UICollectionViewDelegate{
+class ImageCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    var photos: [PhotoInfoOM] = [] {//= NSMutableOrderedSet(){
-        willSet (newItems){
-           
-        }
-        didSet {
-            
-            if self.updateCollectionWhenAddednewElement {
-                self.reloadData()
-            }
-        }
-    }
+	var photos: [PhotoInfoOM] = [] {//= NSMutableOrderedSet(){
+		willSet (newItems) {
 
-    
-    var updateCollectionWhenAddednewElement:Bool = true
-    var controllerDelegate: workWhithControllerViewFromImageCollectionView?;
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.dataSource = self
-        self.delegate   = self
-    }
-    
- 
-    //MARK: UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
-    }
-    
-    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ImageCollectionViewCell
-        
-        //cell.delegate = self
-        
-        let imageItemCell = cell //as! ImageCollectionViewCell
-//        let photoItemElem = photos[indexPath.row]
-//        
-////        if photoItemElem.photoIndex != nil && photoItemElem.photoIndex != indexPath.row {
-////            print("Errror !!!! ")
-////        }
-//        
-//        photoItemElem.photoIndex = indexPath.row
-        //imageItemCell.photoItemElem = photoItemElem
-        
-        let massPhotoItemElem = photos.filter( { return $0.photoIndex == indexPath.row })
-        if massPhotoItemElem.count > 0 {
-            imageItemCell.photoItemElem = massPhotoItemElem[0]
-        
-        } else if massPhotoItemElem.count > 1 {
-                
-             print("Errror !!!! ")
-        }
-        
+		}
+		didSet {
 
-        return cell
-    }
-    
-    //MARK: UICollectionViewDelegate
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-    
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        performSegueWithIdentifier("ShowPhoto", sender: (self.photos.objectAtIndex(indexPath.item) as! PhotoInfo).id)
-        
-        //controllerDelegate?.setCorrectActiveCellInView(photos[indexPath.row]) //NOT Work good! get start behind the PrepareForSeguei - but needed to be first
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        controllerDelegate?.getMorePhoto(scrollView)
-        }
-    
+			if self.updateCollectionWhenAddednewElement {
+				self.reloadData()
+			}
+		}
+	}
+
+
+	var updateCollectionWhenAddednewElement: Bool = true
+	var controllerDelegate: workWhithControllerViewFromImageCollectionView?
+
+	required init? (coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+
+		self.dataSource = self
+		self.delegate   = self
+	}
+
+
+	//MARK: UICollectionViewDataSource
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		// swiftlint:disable:previous line_length
+		return photos.count
+	}
+
+	// The cell that is returned must be retrieved from a call to -
+	//dequeueReusableCellWithReuseIdentifier:forIndexPath:
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		// swiftlint:disable:previous line_length
+
+		// swiftlint:disable force_cast
+		// swiftlint:disable line_length
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ImageCollectionViewCell
+		// swiftlint:enable force_cast
+		// swiftlint:enable line_length
+
+		let imageItemCell = cell //as! ImageCollectionViewCell
+
+		let massPhotoItemElem = photos.filter ({ return $0.photoIndex == indexPath.row })
+		if massPhotoItemElem.count > 0 {
+			imageItemCell.photoItemElem = massPhotoItemElem[0]
+
+		} else if massPhotoItemElem.count > 1 {
+
+			print("Errror !!!! ")
+		}
+
+		return cell
+	}
+
+	//MARK: UICollectionViewDelegate
+	func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+		// swiftlint:disable:previous line_length
+
+	}
+
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		// swiftlint:disable:previous line_length
+
+		// swiftlint:disable line_length
+		//        performSegueWithIdentifier("ShowPhoto", sender: (self.photos.objectAtIndex(indexPath.item) as! PhotoInfo).id)
+
+		//controllerDelegate?.setCorrectActiveCellInView(photos[indexPath.row]) //NOT Work good! get start behind the PrepareForSeguei - but needed to be first
+		// swiftlint:disable:enable line_length
+	}
+
+	func scrollViewDidScroll(scrollView: UIScrollView) {
+		controllerDelegate?.getMorePhoto(scrollView)
+	}
+
 }

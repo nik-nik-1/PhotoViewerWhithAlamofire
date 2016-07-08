@@ -9,9 +9,9 @@
 import Foundation
 
 class GeneralFunctions {
-   
-    class func getPhotoIndexFromItemElement (receivedCell:PhotoInfoOM?) -> Int{
-        return (receivedCell != nil ? receivedCell!.photoIndex : 0)
-    }
-    
+
+	class func getPhotoIndexFromItemElement (receivedCell: PhotoInfoOM?) -> Int {
+		return (receivedCell != nil ? receivedCell!.photoIndex: 0)
+	}
+
 }

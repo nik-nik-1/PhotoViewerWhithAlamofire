@@ -12,10 +12,10 @@ class Comment {
     let userFullname: String
     let userPictureURL: String
     let commentBody: String
-    
+
     init(JSON: AnyObject) {
-        userFullname = JSON.valueForKeyPath("user.fullname") as! String
-        userPictureURL = JSON.valueForKeyPath("user.userpic_url") as! String
-        commentBody = JSON.valueForKeyPath("body") as! String
+        userFullname = (JSON.valueForKeyPath("user.fullname") as? String)!
+        userPictureURL = (JSON.valueForKeyPath("user.userpic_url") as? String)!
+        commentBody = (JSON.valueForKeyPath("body") as? String)!
     }
 }
