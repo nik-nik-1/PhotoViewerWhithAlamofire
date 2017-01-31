@@ -8,36 +8,37 @@
 
 import Alamofire
 import AlamofireObjectMapper
+import Foundation
 
 class JSONWork {
 
 	//MARK: Work with Alamofire Only
-	static func getJSONDataFromURlmanualy (router: Router500px, callback: ((data: [PhotoInfoOM]) -> Void)) {
+	static func getJSONDataFromURlmanualy (_ router: Router500px, callback: @escaping ((_ data: [PhotoInfoOM]) -> Void)) {
 		// swiftlint:disable:previous line_length
 		// swiftlint:disable:next line_length
-		Alamofire.request(.GET, router.urlToConnect, parameters: router.parametersToConnect).responseJSON() {
+		Alamofire.request(router.urlToConnect, method: .get, parameters: router.parametersToConnect).responseJSON() {
 
 			response in switch response.result {
-			case .Success(let JSONData):
+			case .success(let JSONData):
 
 				let jSON = (JSONData as? NSDictionary)!
 				let photoInfos = getPhotoInfoArrayFromData (jSON)
 
-				callback(data: photoInfos)
+				callback(photoInfos)
 
-			case .Failure(let error):
+			case .failure(let error):
 				print("Request failed with error: \(error)")
 			}
 		}
 	}
 
 
-	static func getPhotoInfoArrayFromData (data: NSDictionary) -> [PhotoInfoOM] {
+	static func getPhotoInfoArrayFromData (_ data: NSDictionary) -> [PhotoInfoOM] {
 
 		var photoInfos: [PhotoInfoOM] = []
 
-		let valueForOne     = data.valueForKey("photo")
-		let valueFoArray    = data.valueForKey("photos")
+		let valueForOne     = data.value(forKey: "photo") as? Dictionary<String, Any>
+		let valueFoArray    = data.value(forKey: "photos")
 
 		if valueFoArray != nil {
 
@@ -55,7 +56,7 @@ class JSONWork {
 		return photoInfos
 	}
 
-	static func getPhotoInfoArrayFromData (data: PhotoInfoOMDataFromULR) -> [PhotoInfoOM] {
+	static func getPhotoInfoArrayFromData (_ data: PhotoInfoOMDataFromULR) -> [PhotoInfoOM] {
 
 		var photoInfos: [PhotoInfoOM] = []
 
@@ -77,41 +78,41 @@ class JSONWork {
 	//            print("Response String: \(response.result.value)")
 	//        }
 
-	static func getJSONDataFromURl (router: Router500px, callback: ((data: [PhotoInfoOM]) -> Void)) {
+	static func getJSONDataFromURl (_ router: Router500px, callback: @escaping ((_ data: [PhotoInfoOM]) -> Void)) {
 
-		Alamofire.request(.GET, router.urlToConnect, parameters: router.parametersToConnect)
-			.responseObject { (response: Response<PhotoInfoOMDataFromULR, NSError>) in
+		Alamofire.request(router.urlToConnect, method: .get, parameters: router.parametersToConnect)
+			.responseObject { (response: DataResponse<PhotoInfoOMDataFromULR>) in
 
 				switch response.result {
 
-				case .Success(let data):
+				case .success(let data):
 
 					let photosToReturn = getPhotoInfoArrayFromData (data)
 
-					callback(data: photosToReturn)
+					callback(photosToReturn)
 
-				case .Failure(let error):
+				case .failure(let error):
 					debugPrint("getEvents error: \(error)")
 				}
 		}
 	}
 
-	static func getImageFromJSONData (imageURL: String, callBack: ((Image: UIImage) -> Void)) {
+	static func getImageFromJSONData (_ imageURL: String, callBack: @escaping ((_ image: UIImage) -> Void)) {
 
-		Alamofire.request(.GET, imageURL).responseData	() {
+		Alamofire.request(imageURL, method: .get).responseData	() {
 			response in switch response.result {
-			case .Success(let URLData):
+			case .success(let URLData):
 
 				let image = UIImage(data: URLData)
 
-				callBack(Image: image!)
-			case .Failure(let error):
+				callBack(image!)
+			case .failure(let error):
 				print("Request failed with error: \(error)")
 			}
 		}
 	}
 
-	static func getImageFromJSONData (router: Router500px, callBack: ((Image: UIImage) -> Void)) {
+	static func getImageFromJSONData (_ router: Router500px, callBack: @escaping ((_ image: UIImage) -> Void)) {
 
 		getJSONDataFromURl(router) {(photoInfos) -> Void in
 			if photoInfos.count > 0 {

@@ -15,7 +15,7 @@ class RightSettingsViewController: UIViewController {
 
 		// Do any additional setup after loading the view.
 		// swiftlint:disable:next line_length
-		view.backgroundColor = view.backgroundColor!.colorWithAlphaComponent(GeneralValues.alphaChannelForSideMenu)
+		view.backgroundColor = view.backgroundColor!.withAlphaComponent(GeneralValues.alphaChannelForSideMenu)
 	}
 
 	override func didReceiveMemoryWarning() {

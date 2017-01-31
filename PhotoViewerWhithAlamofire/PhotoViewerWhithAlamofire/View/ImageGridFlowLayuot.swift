@@ -33,7 +33,7 @@ class ImageGridFlowLayout: UICollectionViewFlowLayout {
 	func setupLayout() {
 		minimumInteritemSpacing = 1
 		minimumLineSpacing = 1
-		scrollDirection = .Vertical
+		scrollDirection = .vertical
 	}
 
 	/// here we define the width of each cell,
@@ -41,7 +41,7 @@ class ImageGridFlowLayout: UICollectionViewFlowLayout {
 	//In case you would create 3 columns, change the number 2 to 3
 	func itemWidth() -> CGFloat {
 		// swiftlint:disable:next legacy_cggeometry_functions
-		return (CGRectGetWidth((collectionView?.frame)!)/3)-1
+		return ((collectionView?.frame)!.width/3)-1
 	}
 
 	override var itemSize: CGSize {
@@ -55,7 +55,7 @@ class ImageGridFlowLayout: UICollectionViewFlowLayout {
 		}
 	}
 
-	override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
+	override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
 // swiftlint:disable:previous line_length
 		return collectionView!.contentOffset
 	}

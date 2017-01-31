@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Foundation
 import Alamofire
 
 struct Router500px {
-	var urlToConnect: URLStringConvertible = ""
+	var urlToConnect: URLConvertible = ""
 	var parametersToConnect: [String : AnyObject] = [:]
 
-	private let defaulttypeOfURL = Five100px.TypeOfURL.Photos
+	fileprivate let defaulttypeOfURL = Five100px.TypeOfURL.Photos
 
 	init (imageSize: Five100px.ImageSize, photoId: String?) {
 		urlToConnect        = getUrlStringToConnect(defaulttypeOfURL, photoId: photoId)
@@ -27,12 +28,12 @@ struct Router500px {
 
 	init () {
 		urlToConnect        = getUrlStringToConnect(defaulttypeOfURL, photoId: nil)
-		parametersToConnect = getParametersToConnect(Five100px.ImageSize.Tiny, photoId: nil)
+		parametersToConnect = getParametersToConnect(Five100px.ImageSize.tiny, photoId: nil)
 	}
 
-	private func getUrlStringToConnect (typeOfURL: Five100px.TypeOfURL?,
+	fileprivate func getUrlStringToConnect (_ typeOfURL: Five100px.TypeOfURL?,
 	                                    photoId: String?)
-																		-> URLStringConvertible {
+																		-> URLConvertible {
 
 		var tTypeOfURL: String = ""
 		if  let tempTypeOfURL = typeOfURL {
@@ -45,24 +46,24 @@ struct Router500px {
 		if let tempPhotoId = photoId {
 			tphotoId = "/"+tempPhotoId
 		}
-		let URL = NSURL(string: GeneralValues.urlOf500px + tTypeOfURL + tphotoId)!
+		let URL = Foundation.URL(string: GeneralValues.urlOf500px + tTypeOfURL + tphotoId)!
 
 		return URL
 	}
 
-	private func getParametersToConnect (imageSize: Five100px.ImageSize?,
+	fileprivate func getParametersToConnect (_ imageSize: Five100px.ImageSize?,
 	                                     photoId: String?)
 																		-> [String : AnyObject] {
 
 		let tempImageSize: String = (imageSize != nil ? String(imageSize!.rawValue) : "0")
-		var parameters: [String: AnyObject] = ["consumer_key": GeneralValues.consumer_keyFor500px,
-		                                       "image_size": tempImageSize]
+		var parameters: [String: AnyObject] = ["consumer_key": GeneralValues.consumer_keyFor500px as AnyObject,
+		                                       "image_size": tempImageSize as AnyObject]
 
 		if photoId != nil {
 			//something, if needed ...
 		} else {
-			parameters.updateValue(String(GeneralValues.pageToLoad), forKey: "page")
-			parameters.updateValue(GeneralValues.feature, forKey: "feature")
+			parameters.updateValue(String(GeneralValues.pageToLoad) as AnyObject, forKey: "page")
+			parameters.updateValue(GeneralValues.feature as AnyObject, forKey: "feature")
 		}
 
 		return parameters
@@ -74,11 +75,11 @@ struct Five100px {
 
 
 	enum ImageSize: Int {
-		case Tiny = 1
-		case Small = 2
-		case Medium = 3
-		case Large = 4
-		case XLarge = 5
+		case tiny = 1
+		case small = 2
+		case medium = 3
+		case large = 4
+		case xLarge = 5
 	}
 
 	enum TypeOfURL: String {

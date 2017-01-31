@@ -1,11 +1,12 @@
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-use_frameworks!
-
+source ‘https://github.com/CocoaPods/Specs.git‘
+platform :ios, ‘9.3’
 
 target 'PhotoViewerWhithAlamofire' do
- pod 'Alamofire', '~> 3.3'
- pod 'AlamofireObjectMapper', '~> 3.0'
- pod 'ObjectMapper', '~> 1.2'
- pod 'SlideMenuControllerSwift'
+
+  use_frameworks!
+
+ pod 'Alamofire', '~> 4.3'
+ pod 'AlamofireObjectMapper', '~> 4.0'
+ pod 'SlideMenuControllerSwift', '~> 3.0'
+
 end

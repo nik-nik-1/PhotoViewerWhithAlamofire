@@ -15,7 +15,7 @@ class PhotoInfoOM: NSObject, Mappable {
 	var url: String?
 	var photoIndex: Int!
 
-	override func isEqual(object: AnyObject!) -> Bool {
+	override func isEqual(_ object: Any!) -> Bool {
 		return (object as? PhotoInfoOM)!.id == self.id
 	}
 
@@ -30,7 +30,7 @@ class PhotoInfoOM: NSObject, Mappable {
 	}
 
 	//MARK: protocol Mappable
-	required init?(_ map: Map) {
+	required init?(map: Map) {
 
 	}
 
@@ -51,7 +51,7 @@ class PhotoInfoOMDataFromULR: Mappable {
 	var filterCategory: String?
 
 	//MARK: protocol Mappable
-	required init?(_ map: Map) {
+	required init?(map: Map) {
 
 	}
 

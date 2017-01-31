@@ -1,21 +1,22 @@
 PODS:
-  - Alamofire (3.3.1)
-  - AlamofireObjectMapper (3.0.0):
-    - Alamofire (~> 3.2)
-    - ObjectMapper (~> 1.0)
-  - ObjectMapper (1.2.0)
-  - SlideMenuControllerSwift (2.1.1)
+  - Alamofire (4.3.0)
+  - AlamofireObjectMapper (4.0.1):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
+  - ObjectMapper (2.2.2)
+  - SlideMenuControllerSwift (3.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.3)
-  - AlamofireObjectMapper (~> 3.0)
-  - ObjectMapper (~> 1.2)
-  - SlideMenuControllerSwift
+  - Alamofire (~> 4.3)
+  - AlamofireObjectMapper (~> 4.0)
+  - SlideMenuControllerSwift (~> 3.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
-  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
-  SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireObjectMapper: 842d2eed43a4d0593ff0110d54ac86a170c4519c
+  ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
+  SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 3e44095c9561f70c4374d0fe66462ac022173cd2
+
+COCOAPODS: 1.2.0

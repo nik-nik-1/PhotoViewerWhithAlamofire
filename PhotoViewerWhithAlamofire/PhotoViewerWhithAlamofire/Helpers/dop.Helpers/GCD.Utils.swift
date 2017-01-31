@@ -9,24 +9,24 @@
 import Foundation
 import UIKit
 
-var globalMainQueue: dispatch_queue_t {
-  return dispatch_get_main_queue()
+var globalMainQueue: DispatchQueue {
+  return DispatchQueue.main
 }
 
-var globalUserInteractiveQueue: dispatch_queue_t {
-  return dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.rawValue), 0)
+var globalUserInteractiveQueue: DispatchQueue {
+  return DispatchQueue.global(qos: .userInteractive)
 }
 
-var globalUserInitiatedQueue: dispatch_queue_t {
-  return dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)
+var globalUserInitiatedQueue: DispatchQueue {
+  return DispatchQueue.global(qos: .userInitiated)
 }
 
-var globalUtilityQueue: dispatch_queue_t {
-  return dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.rawValue), 0)
+var globalUtilityQueue: DispatchQueue {
+  return DispatchQueue.global(qos: .utility)
 }
 
-var globalBackgroundQueue: dispatch_queue_t {
-  return dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)
+var globalBackgroundQueue: DispatchQueue {
+  return DispatchQueue.global(qos: .background)
 }
 
 
@@ -36,6 +36,6 @@ class Utils {
   }
 
   class var userInterfaceIdiomIsPad: Bool {
-    return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+    return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
   }
 }

@@ -25,8 +25,8 @@ class ManagePageViewController: UIPageViewController {
 
 		dataSource = self
 		pageControl = UIPageControl.appearance()
-		pageControl.pageIndicatorTintColor = UIColor.darkGrayColor()
-		pageControl.currentPageIndicatorTintColor = UIColor.redColor()
+		pageControl.pageIndicatorTintColor = UIColor.darkGray
+		pageControl.currentPageIndicatorTintColor = UIColor.red
 		pageControl.numberOfPages = maxViewPagesOnUIPageControl
 		//        pageControl.
 		// 1
@@ -37,20 +37,20 @@ class ManagePageViewController: UIPageViewController {
 			// 2
 			setViewControllers(
 				viewControllers,
-				direction: .Forward,
+				direction: .forward,
 				animated: false,
 				completion: nil
 			)
 		}
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		//        navigationItem.title = "ID: " + imageIdStr
 	}
 
-	func viewPhotoDetailController(index: Int) -> ImageViewDetailController? {
+	func viewPhotoDetailController(_ index: Int) -> ImageViewDetailController? {
 		if let storyboard = storyboard,
-			page = storyboard.instantiateViewControllerWithIdentifier("ImageViewDetailController")
+			let page = storyboard.instantiateViewController(withIdentifier: "ImageViewDetailController")
 				as? ImageViewDetailController {
 
 			//            page.photoName = photos[index]
@@ -68,7 +68,7 @@ class ManagePageViewController: UIPageViewController {
 //MARK: protocol SetViewParametersOnPageManager
 extension ManagePageViewController: SetViewParametersOnPageManager {
 
-	func setViewParametresOfNavigationItem (title: String!) {
+	func setViewParametresOfNavigationItem (_ title: String!) {
 		navigationItem.title = title ?? ""
 
 		pageControl.currentPage = { () -> Int in
@@ -91,8 +91,8 @@ extension ManagePageViewController: SetViewParametersOnPageManager {
 extension ManagePageViewController: UIPageViewControllerDataSource {
 
 	// 1
-	func pageViewController(pageViewController: UIPageViewController,
-	                        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+	func pageViewController(_ pageViewController: UIPageViewController,
+	                        viewControllerBefore viewController: UIViewController) -> UIViewController? {
 		// swiftlint:disable:previous line_length
 
 		if let viewController = viewController as? ImageViewDetailController {
@@ -105,8 +105,8 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
 	}
 
 	// 2
-	func pageViewController(pageViewController: UIPageViewController,
-	                        viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+	func pageViewController(_ pageViewController: UIPageViewController,
+	                        viewControllerAfter viewController: UIViewController) -> UIViewController? {
 		// swiftlint:disable:previous line_length
 
 		if let viewController = viewController as? ImageViewDetailController {
@@ -120,12 +120,12 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
 	}
 
 	// MARK: UIPageControl
-	func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+	func presentationCount(for pageViewController: UIPageViewController) -> Int {
 		// swiftlint:disable:next line_length
 		return 0//photos.count//maxViewPagesOnUIPageControl//max(maxViewPagesOnUIPageControl, photos.count)
 	}
 
-	func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+	func presentationIndex(for pageViewController: UIPageViewController) -> Int {
 		return pageControl.currentPage//currentIndex ?? 0
 	}
 

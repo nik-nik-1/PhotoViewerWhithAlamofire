@@ -1,12 +1,7 @@
 //
-//  DateTransform.swift
-//  ObjectMapper
+//  DispatchQueue+Alamofire.swift
 //
-//  Created by Tristan Himmelman on 2014-10-13.
-//
-//  The MIT License (MIT)
-//
-//  Copyright (c) 2014-2015 Hearst
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,31 +20,18 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
+import Dispatch
 import Foundation
 
-public class DateTransform: TransformType {
-	public typealias Object = NSDate
-	public typealias JSON = Double
+extension DispatchQueue {
+    static var userInteractive: DispatchQueue { return DispatchQueue.global(qos: .userInteractive) }
+    static var userInitiated: DispatchQueue { return DispatchQueue.global(qos: .userInitiated) }
+    static var utility: DispatchQueue { return DispatchQueue.global(qos: .utility) }
+    static var background: DispatchQueue { return DispatchQueue.global(qos: .background) }
 
-	public init() {}
-
-	public func transformFromJSON(value: AnyObject?) -> NSDate? {
-		if let timeInt = value as? Double {
-			return NSDate(timeIntervalSince1970: NSTimeInterval(timeInt))
-		}
-		
-		if let timeStr = value as? String {
-			return NSDate(timeIntervalSince1970: NSTimeInterval(atof(timeStr)))
-		}
-		
-		return nil
-	}
-
-	public func transformToJSON(value: NSDate?) -> Double? {
-		if let date = value {
-			return Double(date.timeIntervalSince1970)
-		}
-		return nil
-	}
+    func after(_ delay: TimeInterval, execute closure: @escaping () -> Void) {
+        asyncAfter(deadline: .now() + delay, execute: closure)
+    }
 }

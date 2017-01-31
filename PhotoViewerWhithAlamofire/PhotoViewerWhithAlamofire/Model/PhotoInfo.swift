@@ -31,22 +31,22 @@ class PhotoInfo: NSObject {
 		self.url = url
 	}
 
-	required init(response: NSHTTPURLResponse, representation: AnyObject) {
-		self.id = (representation.valueForKeyPath("photo.id") as? Int)!
-		self.url = (representation.valueForKeyPath("photo.image_url") as? String)!
+	required init(response: HTTPURLResponse, representation: AnyObject) {
+		self.id = (representation.value(forKeyPath: "photo.id") as? Int)!
+		self.url = (representation.value(forKeyPath: "photo.image_url") as? String)!
 
-		self.favoritesCount = representation.valueForKeyPath("photo.favorites_count") as? Int
-		self.votesCount = representation.valueForKeyPath("photo.votes_count") as? Int
-		self.commentsCount = representation.valueForKeyPath("photo.comments_count") as? Int
-		self.highest = representation.valueForKeyPath("photo.highest_rating") as? Float
-		self.pulse = representation.valueForKeyPath("photo.rating") as? Float
-		self.views = representation.valueForKeyPath("photo.times_viewed") as? Int
-		self.camera = representation.valueForKeyPath("photo.camera") as? String
-		self.desc = representation.valueForKeyPath("photo.description") as? String
-		self.name = representation.valueForKeyPath("photo.name") as? String
+		self.favoritesCount = representation.value(forKeyPath: "photo.favorites_count") as? Int
+		self.votesCount = representation.value(forKeyPath: "photo.votes_count") as? Int
+		self.commentsCount = representation.value(forKeyPath: "photo.comments_count") as? Int
+		self.highest = representation.value(forKeyPath: "photo.highest_rating") as? Float
+		self.pulse = representation.value(forKeyPath: "photo.rating") as? Float
+		self.views = representation.value(forKeyPath: "photo.times_viewed") as? Int
+		self.camera = representation.value(forKeyPath: "photo.camera") as? String
+		self.desc = representation.value(forKeyPath: "photo.description") as? String
+		self.name = representation.value(forKeyPath: "photo.name") as? String
 	}
 
-	override func isEqual(object: AnyObject!) -> Bool {
+	override func isEqual(_ object: Any!) -> Bool {
 		return (object as? PhotoInfo)!.id == self.id
 	}
 

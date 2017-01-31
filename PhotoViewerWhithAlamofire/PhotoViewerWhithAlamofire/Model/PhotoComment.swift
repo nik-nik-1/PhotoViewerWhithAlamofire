@@ -14,8 +14,8 @@ class Comment {
     let commentBody: String
 
     init(JSON: AnyObject) {
-        userFullname = (JSON.valueForKeyPath("user.fullname") as? String)!
-        userPictureURL = (JSON.valueForKeyPath("user.userpic_url") as? String)!
-        commentBody = (JSON.valueForKeyPath("body") as? String)!
+        userFullname = (JSON.value(forKeyPath: "user.fullname") as? String)!
+        userPictureURL = (JSON.value(forKeyPath: "user.userpic_url") as? String)!
+        commentBody = (JSON.value(forKeyPath: "body") as? String)!
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 protocol workWhithControllerViewFromImageCollectionView {
 
-	func setCorrectActiveCellInView(activeItem: PhotoInfoOM?)
-	func getMorePhoto(scrollView: UIScrollView)
+	func setCorrectActiveCellInView(_ activeItem: PhotoInfoOM?)
+	func getMorePhoto(_ scrollView: UIScrollView)
 
 }
 
@@ -42,19 +42,19 @@ class ImageCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
 
 
 	//MARK: UICollectionViewDataSource
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		// swiftlint:disable:previous line_length
 		return photos.count
 	}
 
 	// The cell that is returned must be retrieved from a call to -
 	//dequeueReusableCellWithReuseIdentifier:forIndexPath:
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		// swiftlint:disable:previous line_length
 
 		// swiftlint:disable force_cast
 		// swiftlint:disable line_length
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ImageCollectionViewCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCollectionViewCell
 		// swiftlint:enable force_cast
 		// swiftlint:enable line_length
 
@@ -73,12 +73,12 @@ class ImageCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
 	}
 
 	//MARK: UICollectionViewDelegate
-	func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 		// swiftlint:disable:previous line_length
 
 	}
 
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		// swiftlint:disable:previous line_length
 
 		// swiftlint:disable line_length
@@ -88,7 +88,7 @@ class ImageCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
 		// swiftlint:disable:enable line_length
 	}
 
-	func scrollViewDidScroll(scrollView: UIScrollView) {
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		controllerDelegate?.getMorePhoto(scrollView)
 	}
 

@@ -12,7 +12,7 @@ class LeftSettingsViewController: UIViewController {
 
 	@IBOutlet weak var settingContainer1: UIView!
 	@IBOutlet weak var settingContainer2: UIView!
-	private var swipeGestureLeft: UISwipeGestureRecognizer!
+	fileprivate var swipeGestureLeft: UISwipeGestureRecognizer!
 	var mainViewController: UIViewController!
 
 	override func viewDidLoad() {
@@ -28,7 +28,7 @@ class LeftSettingsViewController: UIViewController {
 
 	func setupInit() {
 		let alphaChannelForSideMenu = GeneralValues.alphaChannelForSideMenu
-		view.backgroundColor = view.backgroundColor!.colorWithAlphaComponent(alphaChannelForSideMenu)
+		view.backgroundColor = view.backgroundColor!.withAlphaComponent(alphaChannelForSideMenu)
 		// swiftlint:disable line_length
 		//        settingContainer1.backgroundColor = settingContainer1.backgroundColor!.colorWithAlphaComponent(alphaChannelForSideMenu)
 		//        settingContainer2.backgroundColor = settingContainer2.backgroundColor!.colorWithAlphaComponent(alphaChannelForSideMenu)
@@ -39,7 +39,7 @@ class LeftSettingsViewController: UIViewController {
 		// swiftlint:enable line_length
 	}
 
-	func handleGestureLeft(gesture: UITapGestureRecognizer) {
+	func handleGestureLeft(_ gesture: UITapGestureRecognizer) {
 		//        navigationController?.popViewControllerAnimated(true)
 		//        //self.dismissViewControllerAnimated(true, completion: nil)
 	}

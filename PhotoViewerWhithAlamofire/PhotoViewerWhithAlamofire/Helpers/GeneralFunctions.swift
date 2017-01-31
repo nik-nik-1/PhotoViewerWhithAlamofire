@@ -10,7 +10,7 @@ import Foundation
 
 class GeneralFunctions {
 
-	class func getPhotoIndexFromItemElement (receivedCell: PhotoInfoOM?) -> Int {
+	class func getPhotoIndexFromItemElement (_ receivedCell: PhotoInfoOM?) -> Int {
 		return (receivedCell != nil ? receivedCell!.photoIndex: 0)
 	}
 

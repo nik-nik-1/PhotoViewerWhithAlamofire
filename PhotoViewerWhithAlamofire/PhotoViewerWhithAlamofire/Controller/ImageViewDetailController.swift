@@ -10,7 +10,7 @@
 import UIKit
 
 protocol SetViewParametersOnPageManager {
-	func setViewParametresOfNavigationItem (title: String!)
+	func setViewParametresOfNavigationItem (_ title: String!)
 }
 
 class ImageViewDetailController: UIViewController {
@@ -51,14 +51,14 @@ class ImageViewDetailController: UIViewController {
 
 	@IBOutlet weak var spinner: UIActivityIndicatorView!
 
-	private var image: UIImage? {
+	fileprivate var image: UIImage? {
 		get {return imageView.image}
 		set {
 			imageView.image = newValue
 			imageView.sizeToFit()
 			scrollView?.contentSize = imageView.frame.size
 
-			if spinner.isAnimating() {
+			if spinner.isAnimating {
 				spinner.stopAnimating()
 			}
 		}
@@ -75,18 +75,18 @@ class ImageViewDetailController: UIViewController {
 	}
 
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 
 		navigationItem.title = "ID: "+imageIdStr
 
 		if receivedCell != nil {
 
-			dispatch_async(globalUserInitiatedQueue) { // 1
+			globalUserInitiatedQueue.async { // 1
 
-				let router = Router500px(imageSize: Five100px.ImageSize.Large, photoId: self.imageIdStr)
+				let router = Router500px(imageSize: Five100px.ImageSize.large, photoId: self.imageIdStr)
 				JSONWork.getImageFromJSONData(router) {(Image: UIImage) -> Void in
 
-					dispatch_async(globalMainQueue) { // 2
+					globalMainQueue.async { // 2
 						self.image = Image
 
 					}
@@ -102,7 +102,7 @@ class ImageViewDetailController: UIViewController {
 //MARK: extension
 extension ImageViewDetailController: UIScrollViewDelegate {
 	//MARK: native func, e.t. bonus
-	private func updateMinZoomScaleForSize(size: CGSize) {
+	fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
 		let widthScale = size.width / imageView.bounds.width
 		let heightScale = size.height / imageView.bounds.height
 		let minScale = min(widthScale, heightScale)
@@ -112,7 +112,7 @@ extension ImageViewDetailController: UIScrollViewDelegate {
 		scrollView.zoomScale = minScale
 	}
 
-	private func updateConstraintsForSize(size: CGSize) {
+	fileprivate func updateConstraintsForSize(_ size: CGSize) {
 
 		let mSize = (size.height - imageView.frame.height) / 2.5
 		let yOffset = max(0, mSize) // 2.5 = little upper then center of view
@@ -136,11 +136,11 @@ extension ImageViewDetailController: UIScrollViewDelegate {
 	}
 
 	//MARK: UIScrollViewDelegate
-	func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
 		return imageView
 	}
 
-	func scrollViewDidZoom(scrollView: UIScrollView) {
+	func scrollViewDidZoom(_ scrollView: UIScrollView) {
 		updateConstraintsForSize(view.bounds.size)
 	}
 

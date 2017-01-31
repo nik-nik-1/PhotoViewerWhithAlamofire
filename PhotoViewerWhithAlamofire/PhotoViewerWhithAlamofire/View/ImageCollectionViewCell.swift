@@ -28,7 +28,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
 				spinner.startAnimating()
 				JSONWork.getImageFromJSONData(photoItemElem.url!) {(Image: UIImage) -> Void in
 					self.imageView.image = Image
-					dispatch_async (dispatch_get_main_queue()) {
+					DispatchQueue.main.async  {
 
 						self.spinner.stopAnimating()
 					}

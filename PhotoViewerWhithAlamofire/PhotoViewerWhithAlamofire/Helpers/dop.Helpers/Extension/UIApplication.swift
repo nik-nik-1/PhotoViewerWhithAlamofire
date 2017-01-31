@@ -10,7 +10,7 @@ import SlideMenuControllerSwift
 
 extension UIApplication {
 
-	class func topViewController(viewController: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+	class func topViewController(_ viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
 		// swiftlint:disable:previous line_length
 
 		if let nav = viewController as? UINavigationController {
