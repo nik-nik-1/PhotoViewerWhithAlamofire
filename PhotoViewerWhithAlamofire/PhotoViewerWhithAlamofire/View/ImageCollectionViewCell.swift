@@ -5,37 +5,45 @@
 //  Created by mc373 on 13.04.16.
 //  Copyright © 2016 mc373. All rights reserved.
 //
+//https://habrahabr.ru/post/320152/
 
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
 
-	var needtoInstalImageInCell: Bool = true
+    var needtoInstalImageInCell: Bool = true
 
-	var photoItemElem: PhotoInfoOM! {
-		willSet (newPhotoItemElem) {
+    var photoItemElem: PhotoInfoOM! {
+        willSet (newPhotoItemElem) {
 
-			imageView.image = UIImage(named: "noimage.png")
-		}
+            imageView.image = UIImage(named: "noimage.png")
+        }
 
-		didSet {
+        didSet {
+            updateUI()
+        }
+    }
 
-			if needtoInstalImageInCell {
+    private func updateUI() {
 
-				spinner.startAnimating()
-				JSONWork.getImageFromJSONData(photoItemElem.url!) {(Image: UIImage) -> Void in
-					self.imageView.image = Image
-					DispatchQueue.main.async  {
+        guard needtoInstalImageInCell, let url = photoItemElem.url else {
+            return
+        }
 
-						self.spinner.stopAnimating()
-					}
-				}
+        spinner.startAnimating()
+        JSONWork.getImageFromJSONData(url) {(Image: UIImage) -> Void in
 
-			}
-		} // didSet {
-	}
+            DispatchQueue.main.async  {
+                if url == self.photoItemElem.url {
+                    self.imageView.image = Image
+
+                    self.spinner.stopAnimating()
+                }
+            }
+        }
+    }
 
 }
